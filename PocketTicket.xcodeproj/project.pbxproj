@@ -16,11 +16,11 @@
 		9FFDBA2B1E49BF6F00524FBA /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2A1E49BF6F00524FBA /* Model */; };
 		9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */; };
 		9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */; };
-		9FFDBA331E49C21100524FBA /* CalReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */; };
-		9FFDBA351E49C22B00524FBA /* CalWriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */; };
 		9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA361E49C25000524FBA /* PhotosViewController.swift */; };
 		9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */; };
 		9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */; };
+		9FFDBA3D1E49C33A00524FBA /* CalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */; };
+		9FFDBA3F1E49C34B00524FBA /* CalReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,11 +36,11 @@
 		9FFDBA2A1E49BF6F00524FBA /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDailyViewController.swift; sourceTree = "<group>"; };
 		9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
-		9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalReviewViewController.swift; sourceTree = "<group>"; };
-		9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalWriteReviewViewController.swift; sourceTree = "<group>"; };
 		9FFDBA361E49C25000524FBA /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickFilterViewController.swift; sourceTree = "<group>"; };
 		9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickMainViewController.swift; sourceTree = "<group>"; };
+		9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDetailViewController.swift; sourceTree = "<group>"; };
+		9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalReviewViewController.swift; sourceTree = "<group>"; };
 		A2F43CEF461E389B49B20210 /* Pods-PocketTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,8 +103,8 @@
 				9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */,
 				9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */,
 				9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */,
-				9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */,
-				9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */,
+				9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */,
+				9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */,
 				9FFDBA361E49C25000524FBA /* PhotosViewController.swift */,
 				9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */,
 				9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */,
@@ -247,11 +247,11 @@
 			files = (
 				9F6C656A1E49A9A5009074F0 /* CalMainViewController.swift in Sources */,
 				9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */,
-				9FFDBA351E49C22B00524FBA /* CalWriteReviewViewController.swift in Sources */,
+				9FFDBA3D1E49C33A00524FBA /* CalDetailViewController.swift in Sources */,
 				9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */,
-				9FFDBA331E49C21100524FBA /* CalReviewViewController.swift in Sources */,
 				9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */,
 				9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */,
+				9FFDBA3F1E49C34B00524FBA /* CalReviewViewController.swift in Sources */,
 				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
 				9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  CalWriteReviewViewController.swift
+//  CalDetailViewController.swift
 //  PocketTicket
 //
 //  Created by 하연 on 2017. 2. 7..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalWriteReviewViewController: UIViewController {
+class CalDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
