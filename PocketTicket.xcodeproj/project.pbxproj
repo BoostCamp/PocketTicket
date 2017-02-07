@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		8F22CC4527F7C1335E0FABDB /* Pods_PocketTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */; };
 		9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65671E49A9A5009074F0 /* AppDelegate.swift */; };
-		9F6C656A1E49A9A5009074F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65691E49A9A5009074F0 /* ViewController.swift */; };
+		9F6C656A1E49A9A5009074F0 /* CalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */; };
 		9F6C656D1E49A9A5009074F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656B1E49A9A5009074F0 /* Main.storyboard */; };
 		9F6C656F1E49A9A5009074F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656E1E49A9A5009074F0 /* Assets.xcassets */; };
 		9F6C65721E49A9A5009074F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C65701E49A9A5009074F0 /* LaunchScreen.storyboard */; };
-		9F6C657B1E49AFC5009074F0 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C657A1E49AFC5009074F0 /* Ticket.swift */; };
-		9F6C657D1E49B2D1009074F0 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C657C1E49B2D1009074F0 /* Genre.swift */; };
-		9F6C657F1E49B2F6009074F0 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C657E1E49B2F6009074F0 /* Theater.swift */; };
+		9FFDBA2B1E49BF6F00524FBA /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2A1E49BF6F00524FBA /* Model */; };
+		9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */; };
+		9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */; };
+		9FFDBA331E49C21100524FBA /* CalReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */; };
+		9FFDBA351E49C22B00524FBA /* CalWriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */; };
+		9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA361E49C25000524FBA /* PhotosViewController.swift */; };
+		9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */; };
+		9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,14 +28,19 @@
 		9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6C65641E49A9A5009074F0 /* PocketTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6C65671E49A9A5009074F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F6C65691E49A9A5009074F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalMainViewController.swift; path = ../CalMainViewController.swift; sourceTree = "<group>"; };
 		9F6C656C1E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F6C656E1E49A9A5009074F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6C65711E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F6C65731E49A9A5009074F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F6C657A1E49AFC5009074F0 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		9F6C657C1E49B2D1009074F0 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		9F6C657E1E49B2F6009074F0 /* Theater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
+		9FFDBA2A1E49BF6F00524FBA /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDailyViewController.swift; sourceTree = "<group>"; };
+		9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
+		9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalReviewViewController.swift; sourceTree = "<group>"; };
+		9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalWriteReviewViewController.swift; sourceTree = "<group>"; };
+		9FFDBA361E49C25000524FBA /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickFilterViewController.swift; sourceTree = "<group>"; };
+		9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickMainViewController.swift; sourceTree = "<group>"; };
 		A2F43CEF461E389B49B20210 /* Pods-PocketTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,9 +86,9 @@
 		9F6C65661E49A9A5009074F0 /* PocketTicket */ = {
 			isa = PBXGroup;
 			children = (
-				9F6C65791E49AF8B009074F0 /* Model */,
+				9FFDBA2D1E49C0F900524FBA /* ViewControllers */,
+				9FFDBA2A1E49BF6F00524FBA /* Model */,
 				9F6C65671E49A9A5009074F0 /* AppDelegate.swift */,
-				9F6C65691E49A9A5009074F0 /* ViewController.swift */,
 				9F6C656B1E49A9A5009074F0 /* Main.storyboard */,
 				9F6C656E1E49A9A5009074F0 /* Assets.xcassets */,
 				9F6C65701E49A9A5009074F0 /* LaunchScreen.storyboard */,
@@ -87,14 +97,19 @@
 			path = PocketTicket;
 			sourceTree = "<group>";
 		};
-		9F6C65791E49AF8B009074F0 /* Model */ = {
+		9FFDBA2D1E49C0F900524FBA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9F6C657A1E49AFC5009074F0 /* Ticket.swift */,
-				9F6C657C1E49B2D1009074F0 /* Genre.swift */,
-				9F6C657E1E49B2F6009074F0 /* Theater.swift */,
+				9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */,
+				9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */,
+				9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */,
+				9FFDBA321E49C21100524FBA /* CalReviewViewController.swift */,
+				9FFDBA341E49C22B00524FBA /* CalWriteReviewViewController.swift */,
+				9FFDBA361E49C25000524FBA /* PhotosViewController.swift */,
+				9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */,
+				9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */,
 			);
-			name = Model;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A3112808BBAE3D311136BE47 /* Frameworks */ = {
@@ -170,6 +185,7 @@
 			files = (
 				9F6C65721E49A9A5009074F0 /* LaunchScreen.storyboard in Resources */,
 				9F6C656F1E49A9A5009074F0 /* Assets.xcassets in Resources */,
+				9FFDBA2B1E49BF6F00524FBA /* Model in Resources */,
 				9F6C656D1E49A9A5009074F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,11 +245,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F6C656A1E49A9A5009074F0 /* ViewController.swift in Sources */,
-				9F6C657B1E49AFC5009074F0 /* Ticket.swift in Sources */,
+				9F6C656A1E49A9A5009074F0 /* CalMainViewController.swift in Sources */,
+				9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */,
+				9FFDBA351E49C22B00524FBA /* CalWriteReviewViewController.swift in Sources */,
+				9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */,
+				9FFDBA331E49C21100524FBA /* CalReviewViewController.swift in Sources */,
+				9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */,
+				9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */,
+				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
 				9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */,
-				9F6C657D1E49B2D1009074F0 /* Genre.swift in Sources */,
-				9F6C657F1E49B2F6009074F0 /* Theater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@ import RealmSwift
 class Theater : Object{
     dynamic var id = 0
     dynamic var theaterName = ""
+    let tickets = List<Ticket>()
     
     override class func primaryKey() -> String?{
         return "id"

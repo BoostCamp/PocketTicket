@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalMainViewController.swift
 //  PocketTicket
 //
 //  Created by 하연 on 2017. 2. 7..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
