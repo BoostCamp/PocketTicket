@@ -8,39 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		8F22CC4527F7C1335E0FABDB /* Pods_PocketTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */; };
+		9F0291521E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */; };
+		9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */; };
+		9F055F5F1E4AE5E7008E390A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F055F5E1E4AE5E7008E390A /* Realm.framework */; };
+		9F055F611E4AE5EC008E390A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F055F601E4AE5EC008E390A /* RealmSwift.framework */; };
+		9F055F671E4AE98A008E390A /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F055F661E4AE98A008E390A /* FSCalendar.framework */; };
+		9F28EF631E4C3B4D00DD1333 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF621E4C3B4D00DD1333 /* ModelController.swift */; };
+		9F28EF6E1E4C4B8200DD1333 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF6D1E4C4B8200DD1333 /* Theater.swift */; };
+		9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF6F1E4C4B8D00DD1333 /* Genre.swift */; };
+		9F28EF721E4C4B9500DD1333 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF711E4C4B9500DD1333 /* Ticket.swift */; };
+		9F579C501E4D79BE00086FC6 /* TicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */; };
 		9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65671E49A9A5009074F0 /* AppDelegate.swift */; };
-		9F6C656A1E49A9A5009074F0 /* CalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */; };
 		9F6C656D1E49A9A5009074F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656B1E49A9A5009074F0 /* Main.storyboard */; };
 		9F6C656F1E49A9A5009074F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656E1E49A9A5009074F0 /* Assets.xcassets */; };
 		9F6C65721E49A9A5009074F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C65701E49A9A5009074F0 /* LaunchScreen.storyboard */; };
-		9FFDBA2B1E49BF6F00524FBA /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2A1E49BF6F00524FBA /* Model */; };
+		9FB235ED1E4DF4E300796196 /* TicketFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */; };
+		9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996811E4C028E00960561 /* CalMainViewController.swift */; };
+		9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996831E4C02E900960561 /* CalAddViewController.swift */; };
 		9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */; };
-		9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */; };
-		9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA361E49C25000524FBA /* PhotosViewController.swift */; };
-		9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */; };
-		9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */; };
-		9FFDBA3D1E49C33A00524FBA /* CalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */; };
-		9FFDBA3F1E49C34B00524FBA /* CalReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */; };
+		9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6182BFA12A8413657F62ACB2 /* Pods-PocketTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.debug.xcconfig"; sourceTree = "<group>"; };
+		9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		9F055F5E1E4AE5E7008E390A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
+		9F055F601E4AE5EC008E390A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
+		9F055F661E4AE98A008E390A /* FSCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSCalendar.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/FSCalendar/FSCalendar.framework"; sourceTree = "<group>"; };
+		9F28EF621E4C3B4D00DD1333 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		9F28EF6D1E4C4B8200DD1333 /* Theater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
+		9F28EF6F1E4C4B8D00DD1333 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		9F28EF711E4C4B9500DD1333 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F6C65641E49A9A5009074F0 /* PocketTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6C65671E49A9A5009074F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalMainViewController.swift; path = ../CalMainViewController.swift; sourceTree = "<group>"; };
 		9F6C656C1E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F6C656E1E49A9A5009074F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6C65711E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F6C65731E49A9A5009074F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FFDBA2A1E49BF6F00524FBA /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketFilterTableViewController.swift; sourceTree = "<group>"; };
+		9FB996811E4C028E00960561 /* CalMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalMainViewController.swift; sourceTree = "<group>"; };
+		9FB996831E4C02E900960561 /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
 		9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDailyViewController.swift; sourceTree = "<group>"; };
-		9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
-		9FFDBA361E49C25000524FBA /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickFilterViewController.swift; sourceTree = "<group>"; };
-		9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickMainViewController.swift; sourceTree = "<group>"; };
-		9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDetailViewController.swift; sourceTree = "<group>"; };
-		9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalReviewViewController.swift; sourceTree = "<group>"; };
+		9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketMainViewController.swift; sourceTree = "<group>"; };
 		A2F43CEF461E389B49B20210 /* Pods-PocketTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F055F671E4AE98A008E390A /* FSCalendar.framework in Frameworks */,
+				9F055F611E4AE5EC008E390A /* RealmSwift.framework in Frameworks */,
+				9F055F5F1E4AE5E7008E390A /* Realm.framework in Frameworks */,
 				8F22CC4527F7C1335E0FABDB /* Pods_PocketTicket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +78,16 @@
 				A2F43CEF461E389B49B20210 /* Pods-PocketTicket.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F28EF661E4C4AF700DD1333 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F28EF6D1E4C4B8200DD1333 /* Theater.swift */,
+				9F28EF6F1E4C4B8D00DD1333 /* Genre.swift */,
+				9F28EF711E4C4B9500DD1333 /* Ticket.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9F6C655B1E49A9A5009074F0 = {
@@ -86,13 +111,14 @@
 		9F6C65661E49A9A5009074F0 /* PocketTicket */ = {
 			isa = PBXGroup;
 			children = (
+				9F28EF661E4C4AF700DD1333 /* Models */,
 				9FFDBA2D1E49C0F900524FBA /* ViewControllers */,
-				9FFDBA2A1E49BF6F00524FBA /* Model */,
 				9F6C65671E49A9A5009074F0 /* AppDelegate.swift */,
 				9F6C656B1E49A9A5009074F0 /* Main.storyboard */,
 				9F6C656E1E49A9A5009074F0 /* Assets.xcassets */,
 				9F6C65701E49A9A5009074F0 /* LaunchScreen.storyboard */,
 				9F6C65731E49A9A5009074F0 /* Info.plist */,
+				9F28EF621E4C3B4D00DD1333 /* ModelController.swift */,
 			);
 			path = PocketTicket;
 			sourceTree = "<group>";
@@ -100,14 +126,14 @@
 		9FFDBA2D1E49C0F900524FBA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9F6C65691E49A9A5009074F0 /* CalMainViewController.swift */,
+				9FB996811E4C028E00960561 /* CalMainViewController.swift */,
 				9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */,
-				9FFDBA301E49C1FD00524FBA /* CalAddViewController.swift */,
-				9FFDBA3C1E49C33A00524FBA /* CalDetailViewController.swift */,
-				9FFDBA3E1E49C34B00524FBA /* CalReviewViewController.swift */,
-				9FFDBA361E49C25000524FBA /* PhotosViewController.swift */,
-				9FFDBA381E49C26300524FBA /* TickFilterViewController.swift */,
-				9FFDBA3A1E49C27600524FBA /* TickMainViewController.swift */,
+				9FB996831E4C02E900960561 /* CalAddViewController.swift */,
+				9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */,
+				9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */,
+				9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */,
+				9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */,
+				9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,6 +141,9 @@
 		A3112808BBAE3D311136BE47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F055F661E4AE98A008E390A /* FSCalendar.framework */,
+				9F055F601E4AE5EC008E390A /* RealmSwift.framework */,
+				9F055F5E1E4AE5E7008E390A /* Realm.framework */,
 				9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */,
 			);
 			name = Frameworks;
@@ -185,7 +214,6 @@
 			files = (
 				9F6C65721E49A9A5009074F0 /* LaunchScreen.storyboard in Resources */,
 				9F6C656F1E49A9A5009074F0 /* Assets.xcassets in Resources */,
-				9FFDBA2B1E49BF6F00524FBA /* Model in Resources */,
 				9F6C656D1E49A9A5009074F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,14 +273,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F6C656A1E49A9A5009074F0 /* CalMainViewController.swift in Sources */,
-				9FFDBA391E49C26300524FBA /* TickFilterViewController.swift in Sources */,
-				9FFDBA3D1E49C33A00524FBA /* CalDetailViewController.swift in Sources */,
-				9FFDBA311E49C1FD00524FBA /* CalAddViewController.swift in Sources */,
-				9FFDBA3B1E49C27600524FBA /* TickMainViewController.swift in Sources */,
-				9FFDBA371E49C25000524FBA /* PhotosViewController.swift in Sources */,
-				9FFDBA3F1E49C34B00524FBA /* CalReviewViewController.swift in Sources */,
+				9F579C501E4D79BE00086FC6 /* TicketCollectionViewCell.swift in Sources */,
+				9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */,
+				9FB235ED1E4DF4E300796196 /* TicketFilterTableViewController.swift in Sources */,
+				9F28EF631E4C3B4D00DD1333 /* ModelController.swift in Sources */,
+				9F0291521E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift in Sources */,
+				9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */,
+				9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */,
+				9F28EF721E4C4B9500DD1333 /* Ticket.swift in Sources */,
+				9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */,
+				9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */,
 				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
+				9F28EF6E1E4C4B8200DD1333 /* Theater.swift in Sources */,
 				9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 92JDFZMRGV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
+				);
 				INFOPLIST_FILE = PocketTicket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hayeon.PocketTicket;
@@ -392,6 +428,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 92JDFZMRGV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FSCalendar",
+				);
 				INFOPLIST_FILE = PocketTicket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hayeon.PocketTicket;

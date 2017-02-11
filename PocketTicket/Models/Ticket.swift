@@ -2,7 +2,7 @@
 //  Ticket.swift
 //  PocketTicket
 //
-//  Created by 하연 on 2017. 2. 7..
+//  Created by 하연 on 2017. 2. 9..
 //  Copyright © 2017년 hayeon. All rights reserved.
 //
 
@@ -18,7 +18,7 @@ class Ticket : Object{
     dynamic var seat: String? = nil
     dynamic var theater : Theater?
     dynamic var review : String? = nil
-    let value = RealmOptional<Int>()
+    let stars = RealmOptional<Int>()
     let photos = List<photo>()
     
     override class func primaryKey() -> String?{

@@ -2,7 +2,7 @@
 //  Theater.swift
 //  PocketTicket
 //
-//  Created by 하연 on 2017. 2. 7..
+//  Created by 하연 on 2017. 2. 9..
 //  Copyright © 2017년 hayeon. All rights reserved.
 //
 
@@ -16,4 +16,6 @@ class Theater : Object{
     override class func primaryKey() -> String?{
         return "id"
     }
+
+    
 }

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FSCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PocketTicket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>627218BF57308814C36E9AA38CA2EE2F</key>
+		<key>1C10BCBC3C1015B02A0C82C67F4B511A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66A2600CF1B4FA3647320C6CC4012F0A</key>
+		<key>76A3252FE0421C46B61196A02EF34CC1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76CE962923E600FBE551C2687DD4DC6E</key>
+		<key>8DC8F3D09C9D7A08C468D6F291B1DE8E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
