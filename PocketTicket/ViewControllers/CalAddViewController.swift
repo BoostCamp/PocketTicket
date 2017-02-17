@@ -9,43 +9,80 @@
 import UIKit
 
 class CalAddViewController: UITableViewController, UITextFieldDelegate{
+    
+    //MARK: - Properties
 
     //Data model
-    let modelInstance = ModelController.sharedInstance()
+    let dataInstacne = DataController.sharedInstance()
     
-    //Properties for datePicker
-    @IBOutlet weak var datePickerShowDate: UIDatePicker!
+    //Properties for DatePicker
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dateDetailLabel: UILabel!
     var datePickerFlag = false
-    let dateFormate = DateFormatter()
+    let dateFormat = DateFormatter()
     var currentDate : Date?
 
-    
-    //Properties for genrePickerView
-    var genreNameList = [String]()
+    //Properties for Genre PickerView
     @IBOutlet weak var genrePickerView: UIPickerView!
-    var genrePickerFlag = false
     @IBOutlet weak var genreDetailLabel: UILabel!
+    var genreNameList = [String]()
+    var genrePickerFlag = false
+
+    //textField
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var seatTextField: UITextField!
     
+    //Properties for theater
     
+    @IBOutlet weak var theaterNameLabel: UILabel!
+    @IBOutlet weak var mapImageView: UIImageView!
     
+    //get theater data from map view by tuple
+    var theaterData : (theaterName: String, longtitude: Double, latitude: Double, mapSelectedImage: UIImage)? = nil
+    
+    //Properties for show
+    var showTicket : Ticket? = nil
+    var showFlag = false
+    
+    //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "New"
+        titleTextField.delegate = self
+        seatTextField.delegate = self
     
-        genreNameList = modelInstance.loadGenreNameList()
+        //Make genre name list
+        getGenreNameList()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Todo : 현재시간이 아니라 클릭한 날짜로 해야 함. CalDaily에서 Date받기
         //처음에는 date picker detail 현재시간
-        dateFormate.dateFormat = "yyyy.MM.dd    a h:mm"
+        dateFormat.dateFormat = "yyyy.MM.dd    a h:mm"
         if let currentDate = currentDate{
-            dateDetailLabel.text = dateFormate.string(from: currentDate)
-            datePickerShowDate.date = currentDate
-            
+            dateDetailLabel.text = dateFormat.string(from: currentDate)
+            datePicker.date = currentDate
+        }
+        
+        //Map에서 받아 온 theater 정보 설정
+        if let theaterData = theaterData{
+            mapImageView.image = theaterData.mapSelectedImage
+            theaterNameLabel.text = theaterData.theaterName
+        } else{
+            print("fail")
+        }
+        
+        //show data
+        if showFlag {
+            showSelectedTicket()
+            self.navigationItem.leftBarButtonItem = nil
+            self.tabBarController?.tabBar.isHidden = true
+            showFlag = false
+        } else{
+            print("fail")
         }
     }
     
@@ -57,12 +94,70 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    //date picker의 값이 바뀌면 detial label 값 변경
     @IBAction func showDatePickerDate(_ sender: Any) {
-        dateDetailLabel.text = dateFormate.string(from: datePickerShowDate.date)
+         dateDetailLabel.text = dateFormat.string(from: datePicker.date)
+    }
+    //MARK: - TextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Hide keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+
+    //MARK: - Actions
+    //for unwind
+    @IBAction func unwindToCalAddViewController(segue: UIStoryboardSegue){
+        print("unwind")
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     
-    // MARK: - TableView Delegate
+    //MARK: - Save datas
+    @IBAction func saveAction(_ sender: Any) {
+        var theaterId : Int = 0
+        //save theater
+        if let theaterData = theaterData{
+           theaterId = dataInstacne.addTheaterData(name: theaterData.theaterName, latitude: theaterData.latitude, longtitude: theaterData.longtitude, mapImage: theaterData.mapSelectedImage)
+        }
+        //save ticket
+        if theaterId != 0{
+            let theaterObject = dataInstacne.getTheaterById(theaterId)
+            dataInstacne.addBasicContents(name: titleTextField.text!, seat: seatTextField.text!, date: datePicker.date as NSDate, genre: genreDetailLabel.text!, theater: theaterObject)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Show Ticket
+    func showSelectedTicket(){
+        if let showTicket = showTicket{
+            
+            dateFormat.dateFormat = "yyyy.MM.dd    a h:mm"
+            if let currentDate = currentDate{
+                dateDetailLabel.text = dateFormat.string(from: currentDate)
+                datePicker.date = currentDate
+            }
+
+            self.titleTextField.text = showTicket.name
+            self.seatTextField.text = showTicket.seat
+            self.datePicker.date = showTicket.date as Date
+            self.dateDetailLabel.text = dateFormat.string(from: showTicket.date as Date)
+            self.genreDetailLabel.text = showTicket.genre
+            self.theaterNameLabel.text = showTicket.theater?.theaterName
+            let tempImage = UIImage(data: showTicket.theater?.mapImage as! Data)
+            self.mapImageView.image = tempImage
+        }
+    }
+}
+
+
+//MARK: - TableView Delegate
+extension CalAddViewController{
     //row 선택시 이벤트
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         //Date row를 클릭하면
@@ -72,7 +167,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             if !datePickerFlag{
                 toggleShowDatepicker()
             }
-            //datePicker hide & show date in label
+                //datePicker hide & show date in label
             else{
                 toggleShowDatepicker()
             }
@@ -85,11 +180,12 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             if !genrePickerFlag{
                 toggleShowgenrePicker()
             }
-            //datePicker hide & show date in label
+                //datePicker hide & show date in label
             else{
-                 toggleShowgenrePicker()
+                toggleShowgenrePicker()
             }
         }
+        
     }
     
     //row height 정하기
@@ -100,25 +196,29 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         } else if !genrePickerFlag && indexPath.section == 1 && indexPath.row == 5{
             return 0
         }
-        //height를 원래 크기로
+            //height를 원래 크기로
         else {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
         
     }
-    
-    @IBAction func cancelAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
 
-    }
-  
 }
+
 
 //MARK:- Genre picker view
 extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     
+    //MARK: Get Data
+    func getGenreNameList(){
+        let genreList = dataInstacne.getGenreList()
+        for genre in genreList{
+            genreNameList.append(genre.genreName)
+        }
+    }
     
-    //MARK: - Picker View DataSource
+    
+    //MARK: Picker View DataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -134,7 +234,7 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         return genreNameList[row]
     }
     
-    //MARK: - Picker View Delegate
+    //MARK: Picker View Delegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         genreDetailLabel.text = genreNameList[row]
         
@@ -148,6 +248,12 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         tableView.endUpdates()
     }
 
-
 }
+
+
+
+
+
+
+
 

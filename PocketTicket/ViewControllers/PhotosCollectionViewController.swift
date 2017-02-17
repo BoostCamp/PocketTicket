@@ -12,8 +12,11 @@ private let reuseIdentifier = "Cell"
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
-    var photoArray : [String]!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    var photoArray : [String]!
+    var totalPhotoNum : Int?
+    var currentPhotoIdx : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +27,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        totalPhotoNum = photoArray.count
+        let titleText = "\(currentPhotoIdx+1) / \(totalPhotoNum!)"
+        self.title = titleText
+        
         
         
     }
@@ -51,7 +58,63 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+ 
+    // MARK: - Scroll event
+    //offset을 이용해서 해당하는 카드의 위치를 잡아서 넘김
+     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("Scroll")
+        //현재 이미지 offset
+        let offsetX = scrollView.contentOffset.x
+        //전체 width
+        let viewWidth = self.view.frame.width
+        print(offsetX)
+        print(viewWidth)
+     
+        //title
+        currentPhotoIdx = Int(offsetX/viewWidth)
+        let titleText = "\(currentPhotoIdx+1) / \(totalPhotoNum!)"
+        self.title = titleText
+    }
     
 
+    
+    // MARK: - Share
+    @IBAction func shareImage(_ sender: Any) {
+        let imageString = photoArray[currentPhotoIdx]
+        print(imageString)
+        let image : UIImage = UIImage(named: imageString)!
+        let activityController = UIActivityViewController(activityItems:[image], applicationActivities: nil)
+        self.present(activityController, animated:true, completion: nil)
+        
+        //The completion handler to execute after the activity view controller is dismissed.
+        activityController.completionWithItemsHandler = {(activityType, completed, returnedItems, error) in
+            
+            // Return if cancelled
+            if (!completed) {
+                print("fail save the image")
+                return
+            }
+            
+            //Activity complete
+            print("success save the image")
+        }
+
+    }
+    
+    //TODO : DB에서 데이터 삭제하기, Title 바꾸기
+    @IBAction func deleteImage(_ sender: Any) {
+        let photoIndexPath = IndexPath(row: currentPhotoIdx-1, section: 0)
+//        photoCollectionView.deleteItems(at: [photoIndexPath as IndexPath])
+        photoArray.remove(at: currentPhotoIdx)
+        totalPhotoNum = photoArray.count
+        print(photoArray.count)
+        photoCollectionView.scrollToItem(at: photoIndexPath, at: .left, animated: true)
+        photoCollectionView.reloadData()
+
+
+    }
+  
+
+    
+    
 }

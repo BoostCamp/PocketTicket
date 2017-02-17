@@ -13,7 +13,7 @@ class CalDailyViewController: UIViewController, UITableViewDelegate, UITableView
     var currentDate : Date?
     var stringOfDateForTitle : String?
     
-    let modelInstance = ModelController.sharedInstance()
+    let modelInstance = DataController.sharedInstance()
     var dummyData : [[String:Any]]!
     var currentData = [[String:Any]]()
     
@@ -36,7 +36,7 @@ class CalDailyViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.dummyData = modelInstance.dummyData
+//        self.dummyData = modelInstance.dummyData
         checkCurrentData(dummyData!)
     }
     
