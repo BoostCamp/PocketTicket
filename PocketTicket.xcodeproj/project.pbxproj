@@ -37,6 +37,7 @@
 		9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996831E4C02E900960561 /* CalAddViewController.swift */; };
 		9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */; };
 		9FD5B6101E56A853000DA94E /* DKImagePickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD5B60F1E56A852000DA94E /* DKImagePickerController.framework */; };
+		9FD86CFC1E5E84CA00B50F80 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD86CFB1E5E84CA00B50F80 /* Alarm.swift */; };
 		9FEC69001E5B354F009BE798 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */; };
 		9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69011E5B355D009BE798 /* ContentsViewController.swift */; };
 		9FEC69041E5C31CD009BE798 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69031E5C31CD009BE798 /* NotificationManager.swift */; };
@@ -80,6 +81,7 @@
 		9FB996831E4C02E900960561 /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
 		9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
 		9FD5B60F1E56A852000DA94E /* DKImagePickerController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DKImagePickerController.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/DKImagePickerController/DKImagePickerController.framework"; sourceTree = "<group>"; };
+		9FD86CFB1E5E84CA00B50F80 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		9FEC69011E5B355D009BE798 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		9FEC69031E5C31CD009BE798 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				9F28EF6D1E4C4B8200DD1333 /* Theater.swift */,
 				9F28EF6F1E4C4B8D00DD1333 /* Genre.swift */,
 				9F28EF711E4C4B9500DD1333 /* Ticket.swift */,
+				9FD86CFB1E5E84CA00B50F80 /* Alarm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */,
 				9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */,
 				9F0D7AA51E50B36100FB2FCB /* WriteReviewViewController.swift in Sources */,
+				9FD86CFC1E5E84CA00B50F80 /* Alarm.swift in Sources */,
 				9FEC69001E5B354F009BE798 /* ReviewViewController.swift in Sources */,
 				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
 				9F5337491E53E71C007C1C97 /* DidMainTableViewCell.swift in Sources */,

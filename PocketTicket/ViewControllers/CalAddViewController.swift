@@ -40,8 +40,10 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var Button3Day: UIButton!
     @IBOutlet weak var Button1Day: UIButton!
     var clickedFlag = [false, false, false, false, false, false]
+    let alarmAllDic = [1:"1일전", 2:"3일전", 3:"5일전", 4:"1주전", 5:"2주전", 6:"3주전"]
+    let alarmTimeDic = [1:1, 2:3, 3:5, 4:7, 5:14, 6:21]
+    var alarmSet = Set<Int>()
     var identifierArray = [String]()
-    var alarmListLabel : String? = ""
     let notficationManager = NotificationManager()
     
 
@@ -85,6 +87,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
 //        notficationManager.setNotification(30)
 //        notficationManager.showList()
         
+        
 
     }
     
@@ -92,7 +95,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         super.viewWillAppear(animated)
         
         dateFormat.dateFormat = "yyyy.MM.dd a h:mm"
-        datePicker.date = currentDate!
+        
         
 
         //Map에서 받아 온 theater 정보 설정 : 이미지, 위치이름
@@ -115,6 +118,9 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             self.title = showTicket?.name
         } else{
             print("fail")
+            if currentDate != nil{
+                datePicker.date = currentDate!
+            }
         }
     }
     
@@ -160,16 +166,26 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     //MARK: - Save datas
     @IBAction func saveAction(_ sender: Any) {
         var theaterId : Int = 0
+        var alarmIdArray : [Int]?
         //save theater
         if let theaterData = theaterData{
             theaterId = dataInstacne.addTheaterData(name: theaterData.theaterName, latitude: theaterData.latitude, longtitude: theaterData.longtitude, mapImage: theaterData.mapSelectedImage, locationDetail: theaterData.locationDetail)
         }
+        
+        //save alarm 
+        for index in alarmSet{
+            
+        }
+        
         //save ticket
         if theaterId != 0{
             let theaterObject = dataInstacne.getTheaterById(theaterId)
-            dataInstacne.addBasicContents(name: titleTextField.text!, seat: seatTextField.text!, date: datePicker.date as NSDate, genre: genreLabel.text!, theater: theaterObject, actor: actorTextField.text!)
+            dataInstacne.addBasicContents(name: self.titleTextField.text!, seat: self.seatTextField.text, date: self.datePicker.date as NSDate, genre: self.genreLabel.text!, theater: theaterObject, actor: self.actorTextField.text, alarmLabel: self.alarmLabel.text)
         }
-        
+        notficationManager.title = titleTextField.text!
+        notficationManager.body = "공연 \(alarmAllDic[1]!)입니다!"
+        notficationManager.setNotification()
+        notficationManager.showList()
         dismiss(animated: true, completion: nil)
     }
     
@@ -193,6 +209,11 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             let tempImage = UIImage(data: showTicket.theater?.mapImage as! Data)
             self.mapImageView.image = tempImage
             self.locationDetail = (showTicket.theater?.locationDetail)!
+            if let alarmLabel = showTicket.alarmLabel{
+                self.alarmLabel.text = alarmLabel
+            } else{
+                self.alarmLabel.text = "알람없음"
+            }
         }
     }
     
@@ -327,89 +348,56 @@ extension CalAddViewController{
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    //버튼 눌렀을 때 label에 보임
     @IBAction func buttonPressed(_ sender : UIButton!){
         print("button pressed")
         let senderTag = sender.tag
         if clickedFlag[senderTag-1] == false{
-            print("now clickedflag is false")
             sender.isSelected = true
             clickedFlag[senderTag-1] = true
-            addAlarmLabel(senderTag)
-            if alarmListLabel == ""{
-                alarmLabel.text = "알람 없음"
-            } else{
-                alarmLabel.text = alarmListLabel
-                print("alarm Label : \(alarmListLabel)")
-
-            }
+            let alarmListString = addAlarmLabel(senderTag)
+            alarmLabel.text = alarmListString
         }
         else if clickedFlag[senderTag-1] == true{
-            print("now clickedflag is true")
             sender.isSelected = false
             clickedFlag[senderTag-1] = false
-            removeAlarmLabel(senderTag)
-            alarmLabel.text = alarmListLabel
-            if alarmListLabel == ""{
-                alarmLabel.text = "알람 없음"
-            } else{
-                alarmLabel.text = alarmListLabel
-                
-            }
-
+            let alarmListString = removeAlarmLabel(senderTag)
+            alarmLabel.text = alarmListString
         }
-        print(sender.tag)
-        print(sender.isSelected)
-        print(clickedFlag[senderTag-1])
-        
+
     }
     
-    func addAlarmLabel(_ tag: Int){
-        switch(tag){
-            case 1:
-                alarmListLabel = alarmListLabel! + "1일전 "
-            case 2:
-                alarmListLabel = alarmListLabel! + "3일전 "
-            case 3:
-                alarmListLabel = alarmListLabel! + "5일전 "
-            case 4:
-                alarmListLabel = alarmListLabel! + "1주전 "
-            case 5:
-                alarmListLabel = alarmListLabel! + "2주전 "
-            case 6:
-                alarmListLabel = alarmListLabel! + "3주전 "
-            default:
-                break
-            }
-    }
-    func removeAlarmLabel(_ tag: Int){
-        switch(tag){
-        case 1:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 1일전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "1일전", with: "")
-        case 2:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 3일전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "3일전", with: "")
-        case 3:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 5일전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "5일전", with: "")
-        case 4:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 1주전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "1주전", with: "")
-        case 5:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 2주전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "2주전", with: "")
-        case 6:
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: " 3주전", with: "")
-            alarmListLabel = alarmListLabel?.replacingOccurrences(of: "3주전", with: "")
-        default:
-            break
+    //버튼이 select될 때 add
+    func addAlarmLabel(_ tag: Int) -> String{
+        self.alarmSet.insert(tag)
+        var alarmListString = ""
+        for index in self.alarmSet.sorted(){
+            alarmListString += alarmAllDic[index]!
+            alarmListString += " "
         }
+        return alarmListString
+    }
+    
+    //버튼이 deselect될 때 remove
+    func removeAlarmLabel(_ tag: Int) -> String{
+        self.alarmSet.remove(tag)
+        var alarmListString = ""
+        for index in self.alarmSet.sorted(){
+            alarmListString += alarmAllDic[index]!
+            alarmListString += " "
+        }
+        return alarmListString
+    }
+    
+    //make alarm db
+    func makeAlarmDB(setData: Date, index: Int){
+        let timeTrigger = 24*60*60
     }
     
 }
 
+//MARK: - TextField
 extension CalAddViewController{
-    //MARK: - TextField
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //Hide keyboard
         textField.resignFirstResponder()

@@ -30,7 +30,7 @@ class RealmController {
     // MARK: get data list
     let realm = try! Realm()
     
-    // date 정렬
+    //date 정렬
     var getTicketList : Results<Ticket>{
         get{
             return realm.objects(Ticket.self).sorted(byKeyPath: "date", ascending: true)
@@ -55,15 +55,27 @@ class RealmController {
         }
     }
     
+    var getAlarmist : Results<Alarm>{
+        get{
+            return realm.objects(Alarm.self)
+        }
+    }
+    
     // MARK: get certain data
     func getCertainTheater(_ id: Int) -> Theater{
         let selectTheater = realm.objects(Theater.self).filter("id == \(id)").first
         return selectTheater!
     }
     
+    func getCertainAlarm(_ id: Int) -> Alarm{
+        let selectAlarm = realm.objects(Alarm.self).filter("id == \(id)").first
+        return selectAlarm!
+    }
+    
     
     // MARK: add function
     func addTicketDataInRealm(_ ticket : Ticket){
+        //primary key 하나씩 증가시키기
         var myValue = realm.objects(Ticket.self).map{$0.id}.max() ?? 0
         myValue = myValue + 1
         ticket.id = myValue
@@ -78,6 +90,15 @@ class RealmController {
         theater.id = myValue
         try! realm.write{
             realm.add(theater)
+        }
+    }
+    
+    func addAlarmDataInRealm(_ alarm: Alarm){
+        var myValue = realm.objects(Alarm.self).map{$0.id}.max() ?? 0
+        myValue = myValue + 1
+        alarm.id = myValue
+        try! realm.write{
+            realm.add(alarm)
         }
     }
     
@@ -177,10 +198,6 @@ class RealmController {
     }
     
     
-    
-    
-    var dummyData = [["id" : 0, "name" : "Story of My Life", "genre" : "뮤지컬", "date":"2017.02.03", "time" : "08:00", "seat" : "1층 B블록 3열 4번", "theater": "백암아트홀","revie" : "오늘 스토리오브마이라이프를 보았다.", "star" : 4, "photos" : ["story1", "story2", "story3"]],["id" : 1, "name" : "엘리자벳", "genre" : "뮤지컬", "date":"2017.02.10", "time" : "08:00", "seat" : "2층 3열 4번", "theater": "예술의전당", "revie" : "오늘 예술의전당에서 엘리자벳을 보았다.", "star" : 3, "photos" : ["story2", "story3", "story4"]]]
-    
     // MARK: - add default datas
     func addGenreDataInRealm(){
         print(getGenreList.count)
@@ -202,12 +219,6 @@ class RealmController {
             }
         }
     }
-    
-    
-
-
-
-    var mapImageTest = [UIImage]()
     
         
 }

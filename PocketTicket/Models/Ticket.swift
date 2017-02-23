@@ -14,7 +14,7 @@ class Ticket : Object{
     dynamic var name = ""
     dynamic var genre = ""
     dynamic var date = NSDate()
-    let alarms = List<alarmDate>()
+    dynamic var alarmLabel : String? = nil
     dynamic var seat: String? = nil
     dynamic var actor: String? = nil 
     dynamic var theater : Theater?
@@ -22,15 +22,14 @@ class Ticket : Object{
     dynamic var oneSentence : String? = nil
     dynamic var mainImage : String? = nil
     let photos = List<photo>()
+    let alarms = List<Alarm>()
+    
     
     override class func primaryKey() -> String?{
         return "id"
     }
 }
 
-class alarmDate : Object{
-    dynamic var date: NSDate? = nil
-}
 
 class photo : Object{
     dynamic var photoPath : String? = nil

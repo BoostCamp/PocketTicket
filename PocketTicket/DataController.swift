@@ -64,10 +64,16 @@ class DataController{
         return AllGenres
     }
     
+    
     //MARK: - Get certain data
     func getTheaterById(_ id:Int) -> Theater{
         let selectedTheater = realmInstacne.getCertainTheater(id)
         return selectedTheater
+    }
+    
+    func getAlarmById(_ id:Int) -> Alarm{
+        let selectedAlarm = realmInstacne.getCertainAlarm(id)
+        return selectedAlarm
     }
     
     //MARK: - return count
@@ -78,7 +84,7 @@ class DataController{
     //MARK: - Add Data
     //Add new data
     //Todo : alarm 추가
-    func addBasicContents(name: String, seat: String, date: NSDate, genre: String, theater: Theater, actor: String){
+    func addBasicContents(name: String, seat: String?, date: NSDate, genre: String, theater: Theater, actor: String?, alarmLabel: String?){
         let newTicket = Ticket()
         
         newTicket.name = name
@@ -87,6 +93,7 @@ class DataController{
         newTicket.genre = genre
         newTicket.actor = actor
         newTicket.theater = theater
+        newTicket.alarmLabel = alarmLabel
         realmInstacne.addTicketDataInRealm(newTicket)
     }
     
@@ -115,6 +122,18 @@ class DataController{
         realmInstacne.addTheaterDataInRealm(newTheater)
         
         return newTheater.id
+    }
+    
+    func addAlarmData(setTime: NSDate, contentTitle: String, contentBody: String) -> Int{
+        let newAlarm = Alarm()
+        
+        newAlarm.triggerTime = setTime
+        newAlarm.contentTitle = contentTitle
+        newAlarm.contentBody = contentBody
+        
+        realmInstacne.addAlarmDataInRealm(newAlarm)
+        
+        return newAlarm.id
     }
     
     //Add Genre Default Datas

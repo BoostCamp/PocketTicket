@@ -11,11 +11,13 @@ import UserNotifications
 
 class NotificationManager : NSObject{
    
+    var title = ""
+    var body = "" 
     func setNotification(){
         //Contents : UNNOtificationContent
         let content = UNMutableNotificationContent()
-        content.title = "Don't forget"
-        content.body = "\(time)"
+        content.title = self.title
+        content.body = self.body
         content.sound = UNNotificationSound.default()
         
         //Trigger : UNNotificationTrigger

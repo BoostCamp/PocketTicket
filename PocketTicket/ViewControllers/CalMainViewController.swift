@@ -135,6 +135,7 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
     }
     
+    //Scroll할 부분 찾아내기
     func compareDate(_ selectedDate: Date) -> Int{
         dateFormatForCompare.dateFormat = "yyyy,MM.dd"
         let selectedDateString = dateFormatForCompare.string(from: selectedDate)
