@@ -30,9 +30,16 @@ class RealmController {
     // MARK: get data list
     let realm = try! Realm()
     
+    // date 정렬
     var getTicketList : Results<Ticket>{
         get{
-            return realm.objects(Ticket.self).sorted(byKeyPath: "date")
+            return realm.objects(Ticket.self).sorted(byKeyPath: "date", ascending: true)
+        }
+    }
+    //역순 정렬
+    var getTicketListReverse : Results<Ticket>{
+        get{
+            return realm.objects(Ticket.self).sorted(byKeyPath: "date", ascending: false)
         }
     }
     
@@ -74,22 +81,22 @@ class RealmController {
         }
     }
     
-    func addTheaterData(name: String, latitude: Double, longtitude: Double, mapImage:UIImage){
-        let theater = Theater()
-        let newRealm = try! Realm()
-        var myValue = newRealm.objects(Theater.self).map{$0.id}.max() ?? 0
-        myValue = myValue + 1
-        theater.id = myValue
-        theater.theaterName = name
-        theater.latitude = latitude
-        theater.longtitude = longtitude
-        let mapImageToNSData = UIImagePNGRepresentation(mapImage)
-        theater.mapImage = mapImageToNSData as NSData?
-        
-        try! newRealm.write{
-            newRealm.add(theater)
-        }
-    }
+//    func addTheaterData(name: String, latitude: Double, longtitude: Double, mapImage:UIImage){
+//        let theater = Theater()
+//        let newRealm = try! Realm()
+//        var myValue = newRealm.objects(Theater.self).map{$0.id}.max() ?? 0
+//        myValue = myValue + 1
+//        theater.id = myValue
+//        theater.theaterName = name
+//        theater.latitude = latitude
+//        theater.longtitude = longtitude
+//        let mapImageToNSData = UIImagePNGRepresentation(mapImage)
+//        theater.mapImage = mapImageToNSData as NSData?
+//        
+//        try! newRealm.write{
+//            newRealm.add(theater)
+//        }
+//    }
     
     
     
@@ -106,10 +113,32 @@ class RealmController {
     }
         
     //MARK: update function
-    func updateTicketById(_ review: String, _ oneSentence: String, _ id: Int){
+    func addReviewById(_ review: String, _ oneSentence: String, _ id: Int){
         try! realm.write{
-            realm.create(Ticket.self, value: ["id": id, "review": review, "oneSenetence": oneSentence], update: true)
+            realm.create(Ticket.self, value: ["id": id, "review": review, "oneSentence": oneSentence], update: true)
         }
+    }
+    
+    func addPhotosById(_ photos: [String], _ id: Int){
+        print(id)
+        print(photos.count)
+        for image in photos{
+            print(image)
+        }
+        let selectTicket = Ticket(value: getObjectById(id))
+        print(selectTicket.id)
+        for eachPhoto in photos {
+            let photoObject = photo()
+            photoObject.photoPath = eachPhoto
+            selectTicket.photos.append(photoObject)
+        }
+        try! realm.write{
+            realm.create(Ticket.self, value: ["id": id, "photos": selectTicket.photos], update: true)
+        }
+    }
+    
+    func getObjectById(_ id: Int) -> Object{
+        return realm.object(ofType: Ticket.self, forPrimaryKey: id)!
     }
     
     //get function

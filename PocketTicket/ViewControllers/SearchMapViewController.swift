@@ -27,6 +27,7 @@ class SearchMapViewController: UIViewController, UITableViewDelegate, UITableVie
     var longtitude : Double = 0.0
     var latitude : Double = 0.0
     var locationTitle : String = ""
+    var locationDetail : String = ""
     
     var superViewFlag = false
     
@@ -47,7 +48,12 @@ class SearchMapViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.reloadData()
         
         
-        automaticallyAdjustsScrollViewInsets = false
+//        self.automaticallyAdjustsScrollViewInsets = false
+        
+
+        self.searchController.searchBar.barTintColor = UIColor(red: 235/255, green: 72/255, blue: 79/255, alpha: 1.0)
+        
+        self.searchController.searchBar.tintColor = UIColor.white
         
 
 
@@ -87,11 +93,13 @@ class SearchMapViewController: UIViewController, UITableViewDelegate, UITableVie
         let selectedName = selectedItem.name
         let selectedLatitude = selectedItem.coordinate.latitude
         let selectedLongitude = selectedItem.coordinate.longitude
+        let selectedDetail = selectedItem.title
         
 
         self.latitude = selectedLatitude
         self.longtitude = selectedLongitude
         self.locationTitle = selectedName!
+        self.locationDetail = selectedDetail!
         
 //        self.searchController.searchBar.isHidden = true
         //hide keyboard
@@ -136,7 +144,7 @@ class SearchMapViewController: UIViewController, UITableViewDelegate, UITableVie
             let mapCaputerImage = captureImage()
 //            dataInstance.addTheaterData(name: locationTitle, latitude: latitude, longtitude: longtitude, mapImage: mapImage)
             let controller = segue.destination as! CalAddViewController
-            let theaterTuple = (locationTitle, self.longtitude, self.latitude, mapCaputerImage)
+            let theaterTuple = (locationTitle, self.longtitude, self.latitude, mapCaputerImage, self.locationDetail)
             controller.theaterData = theaterTuple
             print(theaterTuple.0)
         }

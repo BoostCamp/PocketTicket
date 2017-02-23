@@ -35,6 +35,11 @@
 		9FB235ED1E4DF4E300796196 /* TicketFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */; };
 		9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996811E4C028E00960561 /* CalMainViewController.swift */; };
 		9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996831E4C02E900960561 /* CalAddViewController.swift */; };
+		9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */; };
+		9FD5B6101E56A853000DA94E /* DKImagePickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD5B60F1E56A852000DA94E /* DKImagePickerController.framework */; };
+		9FEC69001E5B354F009BE798 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */; };
+		9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69011E5B355D009BE798 /* ContentsViewController.swift */; };
+		9FEC69041E5C31CD009BE798 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69031E5C31CD009BE798 /* NotificationManager.swift */; };
 		9FFD5B651E553D66006BCA1D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD5B641E553D66006BCA1D /* DataController.swift */; };
 		9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */; };
 		9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */; };
@@ -73,6 +78,11 @@
 		9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketFilterTableViewController.swift; sourceTree = "<group>"; };
 		9FB996811E4C028E00960561 /* CalMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalMainViewController.swift; sourceTree = "<group>"; };
 		9FB996831E4C02E900960561 /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
+		9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
+		9FD5B60F1E56A852000DA94E /* DKImagePickerController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DKImagePickerController.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/DKImagePickerController/DKImagePickerController.framework"; sourceTree = "<group>"; };
+		9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		9FEC69011E5B355D009BE798 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
+		9FEC69031E5C31CD009BE798 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9FFD5B641E553D66006BCA1D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDailyViewController.swift; sourceTree = "<group>"; };
 		9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketMainViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD5B6101E56A853000DA94E /* DKImagePickerController.framework in Frameworks */,
 				9F055F671E4AE98A008E390A /* FSCalendar.framework in Frameworks */,
 				9F055F611E4AE5EC008E390A /* RealmSwift.framework in Frameworks */,
 				9F055F5F1E4AE5E7008E390A /* Realm.framework in Frameworks */,
@@ -145,6 +156,7 @@
 				9F6C65731E49A9A5009074F0 /* Info.plist */,
 				9F0D7AB31E520E1C00FB2FCB /* Objective-C Bridging Header.h */,
 				9F0D7ABA1E52214000FB2FCB /* NMapViewResources.swift */,
+				9FEC69031E5C31CD009BE798 /* NotificationManager.swift */,
 			);
 			path = PocketTicket;
 			sourceTree = "<group>";
@@ -165,11 +177,12 @@
 			children = (
 				9F5337461E53E6D4007C1C97 /* DidMainTableViewController.swift */,
 				9F5337481E53E71C007C1C97 /* DidMainTableViewCell.swift */,
-				9F53374A1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift */,
-				9F53374C1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift */,
+				9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */,
 				9F0D7AA41E50B36100FB2FCB /* WriteReviewViewController.swift */,
 				9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */,
 				9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */,
+				9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */,
+				9FEC69011E5B355D009BE798 /* ContentsViewController.swift */,
 			);
 			name = Tickets;
 			sourceTree = "<group>";
@@ -177,6 +190,8 @@
 		9FFD5B621E553CC8006BCA1D /* ETC */ = {
 			isa = PBXGroup;
 			children = (
+				9F53374C1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift */,
+				9F53374A1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift */,
 				9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */,
 				9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */,
 				9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */,
@@ -208,6 +223,7 @@
 		A3112808BBAE3D311136BE47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FD5B60F1E56A852000DA94E /* DKImagePickerController.framework */,
 				9F0D7AB61E5211AC00FB2FCB /* NMapViewerSDK.framework */,
 				9F055F661E4AE98A008E390A /* FSCalendar.framework */,
 				9F055F601E4AE5EC008E390A /* RealmSwift.framework */,
@@ -351,12 +367,16 @@
 				9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */,
 				9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */,
 				9F4F07651E541863009ED7E6 /* CalMainTableViewCell.swift in Sources */,
+				9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */,
 				9F28EF721E4C4B9500DD1333 /* Ticket.swift in Sources */,
+				9FEC69041E5C31CD009BE798 /* NotificationManager.swift in Sources */,
 				9F5337471E53E6D4007C1C97 /* DidMainTableViewController.swift in Sources */,
 				9F53374B1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift in Sources */,
 				9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */,
 				9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */,
+				9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */,
 				9F0D7AA51E50B36100FB2FCB /* WriteReviewViewController.swift in Sources */,
+				9FEC69001E5B354F009BE798 /* ReviewViewController.swift in Sources */,
 				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
 				9F5337491E53E71C007C1C97 /* DidMainTableViewCell.swift in Sources */,
 				9F28EF6E1E4C4B8200DD1333 /* Theater.swift in Sources */,

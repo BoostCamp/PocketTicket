@@ -8,6 +8,8 @@ target 'PocketTicket' do
   # Pods for PocketTicket
 pod 'RealmSwift'
 pod 'FSCalendar'
+pod 'DKImagePickerController'
+
 
 
 end

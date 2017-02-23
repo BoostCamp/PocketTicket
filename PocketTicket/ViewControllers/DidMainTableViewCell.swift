@@ -15,6 +15,7 @@ class DidMainTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var oneSentenceLabel: UILabel!
+    @IBOutlet weak var checkImage: UIImageView!
     
     
     
@@ -23,8 +24,11 @@ class DidMainTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containView.layer.borderWidth = 1
-        containView.layer.borderColor = UIColor.black.cgColor
+        containView.layer.shadowOffset = CGSize(width: 2  , height: 2)
+        containView.layer.shadowOpacity = 0.5
+        containView.layer.shadowRadius = 2
+        containView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

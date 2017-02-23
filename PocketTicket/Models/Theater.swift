@@ -14,7 +14,7 @@ class Theater : Object{
     dynamic var longtitude = 0.0
     dynamic var latitude = 0.0
     dynamic var mapImage : NSData? = nil
-    dynamic var tickets : Ticket?
+    dynamic var locationDetail : String?  = nil
     
     override class func primaryKey() -> String?{
         return "id"

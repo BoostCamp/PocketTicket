@@ -31,6 +31,8 @@ class EachTicketsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         containerView.layer.borderWidth = 1
         containerView.layer.borderColor = UIColor.black.cgColor
+        
+        
     }
     
     func configureCell(){

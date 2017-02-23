@@ -36,6 +36,16 @@ class DataController{
         return AllTickets
     }
     
+    //reverse
+    func getTicketListReverse() -> [Ticket]{
+        let ticketList = realmInstacne.getTicketListReverse
+        var AllTickets = [Ticket]()
+        for ticket in ticketList{
+            AllTickets.append(ticket)
+        }
+        return AllTickets
+    }
+    
     func getTheaterList() -> [Theater]{
         let theaterList = realmInstacne.getTheaterList
         var AllTheaters = [Theater]()
@@ -68,32 +78,31 @@ class DataController{
     //MARK: - Add Data
     //Add new data
     //Todo : alarm 추가
-    func addBasicContents(name: String, seat: String, date: NSDate, genre: String, theater: Theater){
+    func addBasicContents(name: String, seat: String, date: NSDate, genre: String, theater: Theater, actor: String){
         let newTicket = Ticket()
         
         newTicket.name = name
         newTicket.seat = seat
         newTicket.date = date
         newTicket.genre = genre
+        newTicket.actor = actor
         newTicket.theater = theater
         realmInstacne.addTicketDataInRealm(newTicket)
     }
     
     //Add Review
     func addReview(review:String, oneSentece: String, id: Int){
-//        let newTicket = Ticket()
-//    
-//        newTicket.review = review
-//        newTicket.oneSenetence = oneSentece
-        
-        realmInstacne.updateTicketById(review, oneSentece, id)
+        realmInstacne.addReviewById(review, oneSentece, id)
     }
     
     //Add Photos
+    func addPhotos(photos: [String], id: Int){
+        realmInstacne.addPhotosById(photos, id)
+    }
     
     
     //Add Theater
-    func addTheaterData(name: String, latitude: Double, longtitude: Double, mapImage:UIImage) -> Int{
+    func addTheaterData(name: String, latitude: Double, longtitude: Double, mapImage:UIImage, locationDetail: String) -> Int{
         let newTheater = Theater()
         
         newTheater.theaterName = name
@@ -101,6 +110,7 @@ class DataController{
         newTheater.longtitude = longtitude
         let mapImageToNSData = UIImagePNGRepresentation(mapImage)
         newTheater.mapImage = mapImageToNSData as NSData?
+        newTheater.locationDetail = locationDetail
         
         realmInstacne.addTheaterDataInRealm(newTheater)
         
