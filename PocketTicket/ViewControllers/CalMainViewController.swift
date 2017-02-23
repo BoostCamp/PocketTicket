@@ -34,8 +34,8 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         //Data Control
         dataInstacne.addDefaultGenreData()
-        print("Print All Data")
-        dataInstacne.printData()
+//        print("Print All Data")
+//        dataInstacne.printData()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
        
     }
@@ -98,8 +98,8 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         for ticket in ticketList!{
             let ticketDate = ticket["date"] as! Date
             let ticketMonth = dateFormatForCompare.string(from: ticketDate)
-            print("ticketMonth: \(ticketMonth)")
-            print("currentMonth: \(currentMonth)")
+//            print("ticketMonth: \(ticketMonth)")
+//            print("currentMonth: \(currentMonth)")
             if currentMonth == ticketMonth{
                 currentMonthTicket.append(ticket)
             }
@@ -124,7 +124,7 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     func calendar(_ calendar: FSCalendar, didSelect date: Date){
         if currentMonthTicket.count > 0{
             let indexRow = compareDate(date)
-            print("indexRow : \(indexRow)")
+//            print("indexRow : \(indexRow)")
             let indexPath = IndexPath(row: indexRow, section: 0)
             ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         }
@@ -160,11 +160,11 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         for ticket in ticketList!{
             let ticketDate = ticket["date"] as! Date
             let ticketDay = dateFormatForCompare.string(from: ticketDate)
-            print("ticketDateString: \(ticketDay)")
-            print("currentDay: \(currentDay)")
+//            print("ticketDateString: \(ticketDay)")
+//            print("currentDay: \(currentDay)")
             if currentDay == ticketDay{
                 currentDayTicket.append(ticket)
-                print(currentDayTicket.count)
+//                print(currentDayTicket.count)
             }
         }
         
@@ -208,11 +208,11 @@ extension CalMainViewController : UITableViewDelegate, UITableViewDataSource{
         dateFormatForCompare.dateFormat = "yyyy.MM.dd"
         let selectedDateString = dateFormatForCompare.string(from: selectedDate)
         let currentDateString = dateFormatForCompare.string(from: currentTicket.date as Date)
-        print("selectedDateString : \(selectedDateString)")
-        print("currentDateString : \(currentDateString)")
+//        print("selectedDateString : \(selectedDateString)")
+//        print("currentDateString : \(currentDateString)")
         
         if selectedDateString == currentDateString {
-            print("selected here")
+//            print("selected here")
             
             cell.cellView.layer.borderColor = UIColor(red: 235/255, green: 72/255, blue: 79/255, alpha: 1.0).cgColor
         }

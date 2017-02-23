@@ -44,7 +44,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     let alarmTimeDic = [1:1, 2:3, 3:5, 4:7, 5:14, 6:21]
     var alarmSet = Set<Int>()
     var identifierArray = [String]()
-    let notficationManager = NotificationManager()
+    let ticketNotfication = NotificationManager()
     
 
     //textField
@@ -83,9 +83,13 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         
 //        Button3Week.setImage(UIImage(named: "3W"), for: .normal)
 //        Button3Week.setImage(UIImage(named: "3Wcheck"), for: .selected)
-        notficationManager.setNotification()
+//        notficationManager.setNotification()
 //        notficationManager.setNotification(30)
 //        notficationManager.showList()
+        
+        if let currentDate = currentDate{
+            datePicker.date = currentDate
+        }
         
         
 
@@ -118,9 +122,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             self.title = showTicket?.name
         } else{
             print("fail")
-            if currentDate != nil{
-                datePicker.date = currentDate!
-            }
+         
         }
     }
     
@@ -166,7 +168,8 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     //MARK: - Save datas
     @IBAction func saveAction(_ sender: Any) {
         var theaterId : Int = 0
-        var alarmIdArray : [Int]?
+        var ticketId : Int = 0
+        var alarmObjectArray = [Alarm]()
         //save theater
         if let theaterData = theaterData{
             theaterId = dataInstacne.addTheaterData(name: theaterData.theaterName, latitude: theaterData.latitude, longtitude: theaterData.longtitude, mapImage: theaterData.mapSelectedImage, locationDetail: theaterData.locationDetail)
@@ -174,18 +177,35 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         
         //save alarm 
         for index in alarmSet{
-            
+            let timeTrigger = makeAlarmTrigger(setDate: datePicker.date, index: index)
+            let contentTitle = self.titleTextField.text
+            let remain = alarmAllDic[index]!
+            let contentBody = "공연 \(remain) 입니다!"
+            let alarmObject = dataInstacne.addAlarmData(setTime: timeTrigger, contentTitle: contentTitle!, contentBody: contentBody)
+            alarmObjectArray.append(alarmObject)
         }
         
         //save ticket
         if theaterId != 0{
             let theaterObject = dataInstacne.getTheaterById(theaterId)
-            dataInstacne.addBasicContents(name: self.titleTextField.text!, seat: self.seatTextField.text, date: self.datePicker.date as NSDate, genre: self.genreLabel.text!, theater: theaterObject, actor: self.actorTextField.text, alarmLabel: self.alarmLabel.text)
+            ticketId = dataInstacne.addBasicContents(name: self.titleTextField.text!, seat: self.seatTextField.text, date: self.datePicker.date as NSDate, genre: self.genreLabel.text!, theater: theaterObject, actor: self.actorTextField.text, alarmLabel: self.alarmLabel.text)
         }
-        notficationManager.title = titleTextField.text!
-        notficationManager.body = "공연 \(alarmAllDic[1]!)입니다!"
-        notficationManager.setNotification()
-        notficationManager.showList()
+        
+        //save alarm objects in ticket
+        if alarmObjectArray.count > 0{
+            dataInstacne.addAlarmObjectInTicket(alarms: alarmObjectArray, id: ticketId)
+        }
+        
+        //save in notification 
+        for alarm in alarmObjectArray{
+            ticketNotfication.setNotification(identifier: "\(alarm.id)", title: alarm.contentTitle, body: alarm.contentBody, setTime: alarm.triggerTime)
+        }
+        
+        ticketNotfication.showList()
+//        notficationManager.title = titleTextField.text!
+//        notficationManager.body = "공연 \(alarmAllDic[1]!)입니다!"
+//        notficationManager.setNotification()
+//        notficationManager.showList()
         dismiss(animated: true, completion: nil)
     }
     
@@ -390,8 +410,11 @@ extension CalAddViewController{
     }
     
     //make alarm db
-    func makeAlarmDB(setData: Date, index: Int){
-        let timeTrigger = 24*60*60
+    func makeAlarmTrigger(setDate: Date, index: Int) -> NSDate{
+        let oneDay = -24*60*60
+        let days = alarmTimeDic[index]! * oneDay
+        let setTime = NSDate(timeInterval: TimeInterval(days), since: setDate)
+        return setTime
     }
     
 }

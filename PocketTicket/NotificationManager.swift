@@ -10,38 +10,40 @@ import UIKit
 import UserNotifications
 
 class NotificationManager : NSObject{
-   
-    var title = ""
-    var body = "" 
-    func setNotification(){
+
+    func setNotification(identifier: String, title: String, body: String, setTime:NSDate){
         //Contents : UNNOtificationContent
         let content = UNMutableNotificationContent()
-        content.title = self.title
-        content.body = self.body
+        content.title = title
+        content.body = body
         content.sound = UNNotificationSound.default()
-        
-        //Trigger : UNNotificationTrigger
+
+        /*
+        Trigger : UNNotificationTrigger
         let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        // Swift
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 18
-//        dateComponents.minute = 5
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+         Swift
+        var dateComponents = DateComponents()
+        dateComponents.hour = 18
+        dateComponents.minute = 5
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let date = Date(timeIntervalSinceNow: 10)
+         */
         
-//        let date = Date(timeIntervalSinceNow: 10)
-//        let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-//        let timeTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
-//                                                    repeats: false)
+        //time trriger
+        var triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: setTime as Date)
+        triggerDate.second = 0
+        let timeTrigger = UNCalendarNotificationTrigger(dateMatching: triggerDate,
+                                                    repeats: false)
         
         //add request
-        let request = UNNotificationRequest(identifier: "LocalNotification", content: content, trigger: timeTrigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: timeTrigger)
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
                 // Do something with error
                 print("alarm request fail : \(error)")
             } else {
-                print("alarm request success")
+                print("alarm request success : \(identifier)")
                 // Request was added successfully
             }
         }

@@ -158,6 +158,12 @@ class RealmController {
         }
     }
     
+    func addAlarmInTicketById(_ alarms:[Alarm], _ id: Int){
+        try! realm.write{
+            realm.create(Ticket.self, value: ["id": id, "alarms": alarms], update: true)
+        }
+    }
+    
     func getObjectById(_ id: Int) -> Object{
         return realm.object(ofType: Ticket.self, forPrimaryKey: id)!
     }

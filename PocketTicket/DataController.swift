@@ -84,7 +84,7 @@ class DataController{
     //MARK: - Add Data
     //Add new data
     //Todo : alarm 추가
-    func addBasicContents(name: String, seat: String?, date: NSDate, genre: String, theater: Theater, actor: String?, alarmLabel: String?){
+    func addBasicContents(name: String, seat: String?, date: NSDate, genre: String, theater: Theater, actor: String?, alarmLabel: String?) -> Int{
         let newTicket = Ticket()
         
         newTicket.name = name
@@ -95,6 +95,8 @@ class DataController{
         newTicket.theater = theater
         newTicket.alarmLabel = alarmLabel
         realmInstacne.addTicketDataInRealm(newTicket)
+        
+        return newTicket.id
     }
     
     //Add Review
@@ -124,7 +126,12 @@ class DataController{
         return newTheater.id
     }
     
-    func addAlarmData(setTime: NSDate, contentTitle: String, contentBody: String) -> Int{
+    //Add alarms
+    func addAlarmObjectInTicket(alarms: [Alarm], id: Int){
+        realmInstacne.addAlarmInTicketById(alarms, id)
+    }
+    
+    func addAlarmData(setTime: NSDate, contentTitle: String, contentBody: String) -> Alarm{
         let newAlarm = Alarm()
         
         newAlarm.triggerTime = setTime
@@ -133,7 +140,7 @@ class DataController{
         
         realmInstacne.addAlarmDataInRealm(newAlarm)
         
-        return newAlarm.id
+        return newAlarm
     }
     
     //Add Genre Default Datas

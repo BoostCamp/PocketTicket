@@ -103,6 +103,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     func getImage(_ ImageName: String) -> UIImage{
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("Images")
         let getImagePath = paths.appending("/\(ImageName)")
+        print(getImagePath)
         let uiImage = UIImage(contentsOfFile: getImagePath)
         print("changePath : \(ImageName)")
         if let uiImage = uiImage{
