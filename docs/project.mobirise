@@ -409,9 +409,10 @@
               "color": "#000"
             },
             ".lead DIV": {
-              "font-size": "24px",
-              "font-family": "'Noto Sans', sans-serif",
-              "googleLink": "https://fonts.googleapis.com/css?family=Noto+Sans:400,700"
+              "font-size": "19px",
+              "font-family": "'Open Sans', sans-serif",
+              "googleLink": "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700",
+              "color": "#7e9b9f"
             },
             ".mbr-section-title": {
               "font-size": "36px"
@@ -450,7 +451,7 @@
             "showButton": false
           },
           "title": "<span style=\"line-height: 1.1;\"><br></span><span style=\"line-height: 1.1;\">IMPLEMENTED SKILLS</span><br>",
-          "text": "<div><b style=\"color: rgb(55, 58, 60); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.5; white-space: pre-wrap;\"><br></b></div><div><span style=\"color: rgb(55, 58, 60); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.5; white-space: pre-wrap;\"><b>Apple Frameworks</b></span></div><div><span style=\"color: rgb(0, 0, 0); font-size: 1.07rem; line-height: 1.5;\">UIKit, UserNotifications, MapKit, Photos</span></div><div><span style=\"color: rgb(0, 0, 0); font-size: 1.07rem; line-height: 1.5;\"><b>External Libraries&nbsp;</b></span></div><div><a href=\"https://realm.io/\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">RealmSwift</a><span style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; color: rgb(0, 0, 0);\">, </span><a href=\"https://github.com/WenchaoD/FSCalendar\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">FSCalendar</a><span style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; color: rgb(0, 0, 0);\">, </span><a href=\"https://github.com/zhangao0086/DKImagePickerController\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">DKImagePicker</a></div>",
+          "text": "<div><b style=\"color: rgb(55, 58, 60); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.5; white-space: pre-wrap;\"><br></b></div><div><span style=\"color: rgb(55, 58, 60); font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 17px; line-height: 1.5; white-space: pre-wrap;\"><b>Apple Frameworks</b></span></div><div><span style=\"color: rgb(0, 0, 0); font-size: 1.07rem; line-height: 1.5;\">UIKit, UserNotifications, MapKit, Photos</span></div><div><span style=\"color: rgb(0, 0, 0); font-size: 1.07rem; line-height: 1.5;\"><b>External Libraries&nbsp;</b></span></div><div><a href=\"https://realm.io/\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">RealmSwift</a><span style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; color: rgb(0, 0, 0);\">, <a href=\"https://developers.naver.com/docs/map/ios/\" class=\"text-info\">NaverMapApi</a>, </span><a href=\"https://github.com/WenchaoD/FSCalendar\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">FSCalendar</a><span style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; color: rgb(0, 0, 0);\">, </span><a href=\"https://github.com/zhangao0086/DKImagePickerController\" class=\"text-info\" style=\"font-size: 1.07rem; line-height: 1.5; white-space: pre-wrap; background-color: rgb(252, 236, 236);\">DKImagePicker</a>,<i></i></div>",
           "button": "<a data-app-btn=\"true\" class=\"btn btn-secondary\" href=\"https://mobirise.com\" data-toolbar=\"-mbrBtnMove\">SEE ALL TEMPLATES</a>"
         },
         {
@@ -487,7 +488,7 @@
             "showText": true,
             "showTitle": true
           },
-          "button": "  <a data-app-btn=\"true\" class=\"btn btn-danger\" href=\"https://github.com/BoostCamp/PocketTicket\" data-toolbar=\"-mbrBtnMove\"><span class=\"socicon socicon-github mbr-iconfont mbr-iconfont-btn\"></span>github page&nbsp;</a> <a data-app-btn=\"true\" class=\"btn btn-danger\" href=\"mailto:0162890@gmail.com\" data-toolbar=\"-mbrBtnMove\"><span class=\"socicon socicon-mail mbr-iconfont mbr-iconfont-btn\"></span>mail</a>   ",
+          "button": "  <a data-app-btn=\"true\" class=\"btn btn-danger\" href=\"https://github.com/BoostCamp/PocketTicket\" data-toolbar=\"-mbrBtnMove\"><span class=\"socicon socicon-github mbr-iconfont mbr-iconfont-btn\"></span>GitHub&nbsp;</a> <a data-app-btn=\"true\" class=\"btn btn-danger\" href=\"mailto:0162890@gmail.com\" data-toolbar=\"-mbrBtnMove\"><span class=\"socicon socicon-mail mbr-iconfont mbr-iconfont-btn\"></span>Mail</a>   ",
           "text": "",
           "title": "CONTACT ME"
         }

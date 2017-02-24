@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
@@ -456,8 +457,9 @@ h6,
   color: #000;
 }
 #msg-box3-z .lead DIV {
-  font-size: 24px;
-  font-family: 'Noto Sans', sans-serif;
+  font-size: 19px;
+  font-family: 'Open Sans', sans-serif;
+  color: #7e9b9f;
 }
 #msg-box3-z .mbr-section-title {
   font-size: 36px;
