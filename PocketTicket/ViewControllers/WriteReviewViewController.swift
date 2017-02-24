@@ -37,13 +37,16 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     
+    //cancel
     @IBAction func dismissView(_ sender: Any) {
-//        reviewTextView.resignFirstResponder()
+        oneSentenceTextView.resignFirstResponder()
+        reviewTextView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func saveReview(_ sender: Any) {
         let currentTicketId = currentTicket?.id
+        reviewTextView.resignFirstResponder()
         dateInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
         dismiss(animated: true, completion: nil)
     }
@@ -71,7 +74,7 @@ extension WriteReviewViewController{
         if(textField.isEqual(self.oneSentenceTextView)){ //titleField에서 리턴키를 눌렀다면
             self.reviewTextView.becomeFirstResponder()//컨텐츠필드로 포커스 이동
         }
-        return true
+        return false
     }
 }
 
@@ -82,6 +85,7 @@ extension WriteReviewViewController{
         if reviewTextView.text == "리뷰를 입력하세요"{
             textView.text = ""
         }
+        textView.textColor = UIColor.black
         return true
     }
 }

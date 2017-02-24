@@ -37,6 +37,7 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
 //        print("Print All Data")
 //        dataInstacne.printData()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
        
     }
     
@@ -131,7 +132,7 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         selectedDate = date
 //        getCurrentDayTicket(date)
         ticketTableView.reloadData()
-        calendar.reloadData()
+//        calendar.reloadData()
         
     }
     

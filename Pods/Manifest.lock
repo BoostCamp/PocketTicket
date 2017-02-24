@@ -1,15 +1,15 @@
 PODS:
-  - DKImagePickerController (3.5.0):
-    - DKImagePickerController/Camera (= 3.5.0)
-    - DKImagePickerController/ImageManager (= 3.5.0)
-  - DKImagePickerController/Camera (3.5.0)
-  - DKImagePickerController/ImageManager (3.5.0)
+  - DKImagePickerController (3.5.1):
+    - DKImagePickerController/Camera (= 3.5.1)
+    - DKImagePickerController/ImageManager (= 3.5.1)
+  - DKImagePickerController/Camera (3.5.1)
+  - DKImagePickerController/ImageManager (3.5.1)
   - FSCalendar (2.7.2)
-  - Realm (2.4.2):
-    - Realm/Headers (= 2.4.2)
-  - Realm/Headers (2.4.2)
-  - RealmSwift (2.4.2):
-    - Realm (= 2.4.2)
+  - Realm (2.4.3):
+    - Realm/Headers (= 2.4.3)
+  - Realm/Headers (2.4.3)
+  - RealmSwift (2.4.3):
+    - Realm (= 2.4.3)
 
 DEPENDENCIES:
   - DKImagePickerController
@@ -17,10 +17,10 @@ DEPENDENCIES:
   - RealmSwift
 
 SPEC CHECKSUMS:
-  DKImagePickerController: 0fccc62b047a6b0c64d81e7b64a3deab22b86839
+  DKImagePickerController: 8db7e76a88a7a66a893ba30e935cc4c9bb7ed335
   FSCalendar: 6200ef796dfe85005ff2fb19bbd429f8be742f86
-  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
-  RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
+  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
+  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
 
 PODFILE CHECKSUM: eed2d8cae06c1c0adfa4b07444d3bccdd6198576
 

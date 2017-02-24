@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class DidMainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containView: UIView!
@@ -16,8 +15,9 @@ class DidMainTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var oneSentenceLabel: UILabel!
     @IBOutlet weak var checkImage: UIImageView!
+    @IBOutlet weak var fullImage: UIImageView!
     
-    
+    @IBOutlet weak var notLabel: UILabel!
     
     
     

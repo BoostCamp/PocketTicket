@@ -122,11 +122,12 @@ open class DKImagePickerController : UINavigationController {
     lazy public var UIDelegate: DKImagePickerControllerUIDelegate = {
         return DKImagePickerControllerDefaultUIDelegate()
     }()
+    
     /// Forces selection of tapped image immediatly.
     public var singleSelect = false
     
     /// The maximum count of assets which the user will be able to select.
-    public var maxSelectableCount = 10
+    public var maxSelectableCount = 999
     
     /// Set the defaultAssetGroup to specify which album is the default asset group.
     public var defaultAssetGroup: PHAssetCollectionSubtype?
@@ -194,7 +195,7 @@ open class DKImagePickerController : UINavigationController {
     
     /// The callback block is executed when user pressed the cancel button.
     public var didCancel: (() -> Void)?
-    public var showsCancelButton = true {
+    public var showsCancelButton = false {
         didSet {
             if let rootVC =  self.viewControllers.first {
                 self.updateCancelButtonForVC(rootVC)
@@ -244,11 +245,8 @@ open class DKImagePickerController : UINavigationController {
     }
     
     private var hasInitialized = false
-    
- 
-
     override open func viewWillAppear(_ animated: Bool) {
-
+        super.viewWillAppear(animated)
         
         if !hasInitialized {
             hasInitialized = true
@@ -264,9 +262,6 @@ open class DKImagePickerController : UINavigationController {
                     self.setViewControllers([camera], animated: false)
                 }
             } else {
-             
-                //MEMEM
-                
                 self.isNavigationBarHidden = false
                 let rootVC = DKAssetGroupDetailVC()
                 rootVC.imagePickerController = self
@@ -279,13 +274,10 @@ open class DKImagePickerController : UINavigationController {
                 }
             }
         }
-        
-     
     }
     
     private lazy var assetFetchOptions: PHFetchOptions = {
         let assetFetchOptions = PHFetchOptions()
-        assetFetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         return assetFetchOptions
     }()
     
@@ -417,7 +409,6 @@ open class DKImagePickerController : UINavigationController {
         self.presentingViewController?.dismiss(animated: true, completion: {
             self.didSelectAssets?(self.selectedAssets)
             self.deselectAllAssets()
-            
 
         })
     }
@@ -426,6 +417,7 @@ open class DKImagePickerController : UINavigationController {
     
     public func deselectAssetAtIndex(_ index: Int) {
         let asset = self.selectedAssets[index]
+        //Linda -> For deselect
         self.deselectAsset(asset)
     }
     
@@ -461,7 +453,7 @@ open class DKImagePickerController : UINavigationController {
             }
         }
     }
-
+    
     internal func deselectImage(_ asset: DKAsset) {
         self.selectedAssets.remove(at: selectedAssets.index(of: asset)!)
         self.UIDelegate.imagePickerController(self, didDeselectAssets: [asset])

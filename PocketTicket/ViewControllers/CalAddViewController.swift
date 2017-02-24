@@ -72,6 +72,8 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         super.viewDidLoad()
 
         self.title = "New"
+        dateFormat.dateFormat = "yyyy.MM.dd a h:mm"
+        
         titleTextField.delegate = self
         seatTextField.delegate = self
         actorTextField.delegate = self
@@ -80,15 +82,20 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         getGenreNameList()
         
         routeButton.isHidden = true
-        
-//        Button3Week.setImage(UIImage(named: "3W"), for: .normal)
-//        Button3Week.setImage(UIImage(named: "3Wcheck"), for: .selected)
-//        notficationManager.setNotification()
-//        notficationManager.setNotification(30)
-//        notficationManager.showList()
+
         
         if let currentDate = currentDate{
-            datePicker.date = currentDate
+//            let tempDate = DateComponents()
+            var calendarUnitFlags : Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+
+            
+            var dateComponent = Calendar.current.dateComponents(calendarUnitFlags, from: currentDate)
+            dateComponent.hour = 20
+            dateComponent.minute = 0
+            dateComponent.second = 0
+            let newDate = dateComponent.date
+            print(newDate)
+            dateLabel.text = dateFormat.string(from: datePicker.date)
         }
         
         
@@ -98,7 +105,6 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dateFormat.dateFormat = "yyyy.MM.dd a h:mm"
         
         
 
@@ -116,10 +122,17 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
         if showFlag {
             showSelectedTicket()
             self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil
             self.tabBarController?.tabBar.isHidden = true
             routeButton.isHidden = false
             showFlag = false
             self.title = showTicket?.name
+            //tableview 선택 안됨
+            tableView.allowsSelection = false
+            //textField 수정 안됨
+            titleTextField.isUserInteractionEnabled = false
+            seatTextField.isUserInteractionEnabled = false
+            actorTextField.isUserInteractionEnabled = false
         } else{
             print("fail")
          
@@ -139,8 +152,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     @IBAction func showDatePickerDate(_ sender: Any) {
         let setDate = datePicker.date
 //        let threeDayBefore = NSDate(timeInterval: -24*60*60*7, since: setDate)
-        
-         dateLabel.text = dateFormat.string(from: setDate)
+         self.dateLabel.text = dateFormat.string(from: setDate)
     }
 
     //MARK: - Actions

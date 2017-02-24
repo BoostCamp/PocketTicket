@@ -40,6 +40,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         createDirectory()
         //get photo array
         loadPhotoList()
+        //show cancel button
+        pickerController.showsCancelButton = true
         
     }
     
@@ -285,6 +287,9 @@ extension PhotosViewController{
         
         return selectedImages
     }
+    
+    
+
     
 
 
