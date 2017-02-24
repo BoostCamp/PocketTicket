@@ -246,10 +246,12 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             let tempImage = UIImage(data: showTicket.theater?.mapImage as! Data)
             self.mapImageView.image = tempImage
             self.locationDetail = (showTicket.theater?.locationDetail)!
-            if let alarmLabel = showTicket.alarmLabel{
-                self.alarmLabel.text = alarmLabel
-            } else{
+            if showTicket.alarmLabel == ""{
+                print("알람없다")
                 self.alarmLabel.text = "알람없음"
+            } else{
+                print("알람있다")
+                self.alarmLabel.text = showTicket.alarmLabel
             }
         }
     }

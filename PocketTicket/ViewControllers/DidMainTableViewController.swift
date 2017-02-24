@@ -29,11 +29,13 @@ class DidMainTableViewController: UITableViewController {
     let sectionNameArray = ["Last", "Today", "Upcoming"]
     var sectionTicketArray = [[Ticket]]()
     
+    var moveToDetailFlag = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = false
-
+        
         
     }
     
@@ -51,10 +53,13 @@ class DidMainTableViewController: UITableViewController {
         
 //        tableView.reloadData()
         
-        let indexPath = IndexPath(row: 0, section: 1)
-        ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         
-
+        if !moveToDetailFlag {
+            let indexPath = IndexPath(row: 0, section: 1)
+            ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+        }
+        
+     
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -184,6 +189,8 @@ class DidMainTableViewController: UITableViewController {
         let currentTicket = ticketList?[indexPath.row]
         
         detailController.showTicket = currentTicket
+        
+        moveToDetailFlag = true
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }

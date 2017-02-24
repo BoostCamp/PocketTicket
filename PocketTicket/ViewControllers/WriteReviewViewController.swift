@@ -46,10 +46,15 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
 
     @IBAction func saveReview(_ sender: Any) {
         let currentTicketId = currentTicket?.id
-        reviewTextView.resignFirstResponder()
-        dateInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
+//        reviewTextView.resignFirstResponder()
+        self.dateInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
         
-        alertSaveReview()
+        self.reviewTextView.resignFirstResponder()
+        self.oneSentenceTextView.resignFirstResponder()
+        self.alertSaveReview()
+//        self.reviewTextView.resignFirstResponder()
+//        self.oneSentenceTextView.resignFirstResponder()
+//        self.dismiss(animated: true, completion: nil)
 
     }
     
@@ -60,7 +65,9 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
         {
             (result : UIAlertAction) -> Void in
+            print("yap")
             self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
 
 
         }

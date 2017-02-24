@@ -32,8 +32,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var imagesDirectoryPath : String!
     var imageNameArray = [String]()
     var firstShow = true
+    var addImageCount = 0
     
-
+    //indicator
+    var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +66,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             shareButton.isEnabled = false
         }
         self.tabBarController?.tabBar.isHidden = true
+        
  
  
         
@@ -90,20 +94,30 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
 
         totalPhotoNum = photoNameArray.count
 
+        
+        photoCollectionView.reloadData()
+        
+        
         if totalPhotoNum != 0{
             let titleText = "\(currentPhotoIdx+1) / \(totalPhotoNum)"
             self.title = titleText
             deleteButton.isEnabled = true
             shareButton.isEnabled = true
-//            photoCollectionView.scrollToItem(at: IndexPath(row: currentPhotoIdx, section: 0), at: .right, animated: true)
+            
         }
         
-//        if isAddPhoto{
-//            isAddPhoto = false
-//            photoCollectionView.scrollToItem(at: IndexPath(row: totalPhotoNum-1, section: 0), at: .right, animated: true)
-//        }
+        //추가 된 이미지쪽으로 스크롤 움직이기
+        if isAddPhoto{
+            isAddPhoto = false
+            let row = self.totalPhotoNum - self.addImageCount
+            let indexPath = IndexPath(row: row, section:0)
+            self.photoCollectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+            let titleText = "\(row+1) / \(totalPhotoNum)"
+            self.title = titleText
+        }
         
-        photoCollectionView.reloadData()
+
+        
     }
     
     //MARK: - create Directory
@@ -206,16 +220,27 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         deleteAlert()
     }
 
+//    func startIndicator(){
+//        self.activityIndicator.center = self.view.center
+//        self.activityIndicator.hidesWhenStopped = true
+//        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+//        self.view.addSubview(self.activityIndicator)
+//        
+//        self.activityIndicator.startAnimating()
+//    }
+//    
+//    func stopIndicator(){
+//        self.activityIndicator.stopAnimating()
+//    }
 
     @IBAction func connectDKImagePicker(_ sender: Any) {
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             print("didSelectAssets")
             print(assets)
-            //give alert
-            if assets.count > 0 {
-                self.alertActivity("save")
-                self.isAddPhoto = true
-            }
+            //asset count
+            print("here")
+//            self.startIndicator()
+         
             self.imageNameArray.removeAll()
             //save photos
             for asset in assets{
@@ -226,6 +251,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             //save photos in realm
             self.dataInstance.addPhotos(photos: self.imageNameArray, id: (self.showTicket?.id)!)
+            //give alert
+            if assets.count > 0 {
+                self.alertActivity("save")
+                self.isAddPhoto = true
+            }
             //reload datas
             self.loadPhotoList()
         }
@@ -253,7 +283,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
         {
             (result : UIAlertAction) -> Void in
-            print("You pressed OK")
             self.photoCollectionView.reloadData()
             
         }
