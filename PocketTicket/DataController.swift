@@ -150,6 +150,10 @@ class DataController{
     
     //Todo : update
     //Todo : delete
+    func deletePhoto(id: Int, photoName: String){
+        realmInstacne.deletePhotoById(id, photoName)
+        print("done")
+    }
     
     //ETC
     func deleteAll(){

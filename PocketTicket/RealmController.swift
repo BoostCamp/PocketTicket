@@ -132,6 +132,16 @@ class RealmController {
             newRealm.delete(selectTicket!)
         }
     }
+    
+    func deletePhotoById(_ id: Int, _ photoName: String){
+        let ticket = realm.objects(Ticket.self).filter("id == \(id)").first
+        let photos = ticket?.photos
+        let selectedPhoto = photos?.filter("photoPath == %@", photoName).first
+        try! realm.write{
+            realm.delete(selectedPhoto!)
+        }
+        
+    }
         
     //MARK: update function
     func addReviewById(_ review: String, _ oneSentence: String, _ id: Int){

@@ -15,6 +15,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var addPhotos: UIBarButtonItem!
     
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     let dataInstance = DataController.sharedInstance()
 
     var showTicket : Ticket? = nil
@@ -37,17 +41,27 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         //table view에서 navibar 만큼 내려가는 간격 없애기
         automaticallyAdjustsScrollViewInsets = false
         
+        //create Directory
         createDirectory()
+        
         //get photo array
         loadPhotoList()
+        
         //show cancel button
         pickerController.showsCancelButton = true
+        
+        
         
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if totalPhotoNum == 0{
+            self.title = "Photos"
+            deleteButton.isEnabled = false
+            shareButton.isEnabled = false
+        }
         self.tabBarController?.tabBar.isHidden = true
  
  
@@ -79,6 +93,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         if totalPhotoNum != 0{
             let titleText = "\(currentPhotoIdx+1) / \(totalPhotoNum)"
             self.title = titleText
+            deleteButton.isEnabled = true
+            shareButton.isEnabled = true
 //            photoCollectionView.scrollToItem(at: IndexPath(row: currentPhotoIdx, section: 0), at: .right, animated: true)
         }
         
@@ -112,7 +128,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             return uiImage
         } else{
             print("conver uiimage fail")
-            return UIImage(named: "story2")!
+            return #imageLiteral(resourceName: "addPhoto")
         }
     }
 
@@ -151,6 +167,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
      
         //title
         currentPhotoIdx = Int(offsetX/viewWidth)
+        print("currentPhotoIdx : \(currentPhotoIdx)")
         let titleText = "\(currentPhotoIdx+1) / \(totalPhotoNum)"
         self.title = titleText
     }
@@ -159,40 +176,36 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     // MARK: - Share
     @IBAction func shareImage(_ sender: Any) {
-//        let photoNSData = photoNameArray[currentPhotoIdx]
-//        let photoUIImage = UIImage(data: photoNSData as Data)
-//        let image : UIImage = photoUIImage!
-//        let activityController = UIActivityViewController(activityItems:[image], applicationActivities: nil)
-//        self.present(activityController, animated:true, completion: nil)
-//        
-//        //The completion handler to execute after the activity view controller is dismissed.
-//        activityController.completionWithItemsHandler = {(activityType, completed, returnedItems, error) in
-//            
-//            // Return if cancelled
-//            if (!completed) {
-//                print("fail save the image")
-//                return
-//            }
-//            
-//            //Activity complete
-//            print("success save the image")
-//        }
+        let selectedPhotoName = photoNameArray[currentPhotoIdx]
+        let selectedPhoto = getImage(selectedPhotoName)
+        let activityController = UIActivityViewController(activityItems:[selectedPhoto], applicationActivities: nil)
+        self.present(activityController, animated:true, completion: nil)
+        
+        //The completion handler to execute after the activity view controller is dismissed.
+        activityController.completionWithItemsHandler = {(activityType, completed, returnedItems, error) in
+            
+            // Return if cancelled
+            if (!completed) {
+                print("fail save the image")
+                return
+            }
+            
+            //Activity complete
+            //사진이 저장될 경우
+            if activityType == UIActivityType.saveToCameraRoll{
+                self.alertActivity("sharedSave")
+            } else{ //사진을 공유할 경우
+                self.alertActivity("share")
+            }
+            print("success save the image")
+        }
 
     }
     
-    //TODO : DB에서 데이터 삭제하기, Title 바꾸기
-    @IBAction func deleteImage(_ sender: Any) {
-        let photoIndexPath = IndexPath(row: currentPhotoIdx-1, section: 0)
-//        photoCollectionView.deleteItems(at: [photoIndexPath as IndexPath])
-        photoNameArray.remove(at: currentPhotoIdx)
-        totalPhotoNum = photoNameArray.count
-        print(photoNameArray.count)
-        photoCollectionView.scrollToItem(at: photoIndexPath, at: .left, animated: true)
-        photoCollectionView.reloadData()
-
-
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        deleteAlert()
     }
-  
+
 
     @IBAction func connectDKImagePicker(_ sender: Any) {
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
@@ -200,7 +213,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             print(assets)
             //give alert
             if assets.count > 0 {
-                self.alertSavePhotos()
+                self.alertActivity("save")
                 self.isAddPhoto = true
             }
             self.imageNameArray.removeAll()
@@ -221,17 +234,104 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.present(pickerController, animated: true){}
     }
     
-    func alertSavePhotos(){
-        let alertController = UIAlertController(title: "알림", message: "사진이 저장되었습니다.", preferredStyle: UIAlertControllerStyle.alert)
+    func alertActivity(_ alertType: String){
+        var alertMessage = ""
+        switch(alertType){
+            case "save":
+                alertMessage = "사진이 저장되었습니다."
+            case "sharedSave" :
+                alertMessage = "사진이 저장되었습니다."
+            case "share" :
+                alertMessage = "사진이 공유되었습니다."
+        default:
+            break
+
+        }
+
+        let alertController = UIAlertController(title: "알림", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
         {
             (result : UIAlertAction) -> Void in
             print("You pressed OK")
             self.photoCollectionView.reloadData()
+            
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteAlert(){
+        let alertController = UIAlertController(title: "알림", message: "삭제하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        {
+            (result : UIAlertAction) -> Void in
+            print("You pressed OK")
+            self.deleteImage()
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
+        {
+            (result : UIAlertAction) -> Void in
+            print("You pressed cancel")
+            
+        }
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteImage(){
+        
+        //delete in Realm
+        let currentPhotoName = photoNameArray[self.currentPhotoIdx]
+        let ticketId = showTicket?.id
+        dataInstance.deletePhoto(id: ticketId!, photoName: currentPhotoName)
+        
+        //delete in directory
+        deleteImageInDirectory(currentPhotoName)
+
+        //delete image in array & change title
+        self.photoNameArray.remove(at: self.currentPhotoIdx)
+        self.totalPhotoNum = self.photoNameArray.count
+        
+        if self.totalPhotoNum > 0 {
+            if self.currentPhotoIdx == self.totalPhotoNum{
+                self.currentPhotoIdx -= 1
+            }
+            let titleText = "\(self.currentPhotoIdx+1) / \(self.totalPhotoNum)"
+            
+            self.title = titleText
+        }
+        else {
+            self.title = "Photos"
+            self.deleteButton.isEnabled = false
+            self.shareButton.isEnabled = false
+            
+        }
+        self.photoCollectionView.reloadData()
+    }
+    
+    func deleteImageInDirectory(_ imageName: String){
+        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Images")
+        
+        // create a name for your image
+        let fileURL = documentsDirectoryURL.appendingPathComponent(imageName)
+        print(fileURL)
+        
+        
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+                print("Image delete Successfully")
+            } catch {
+                print(error)
+            }
+        } else {
+            print("Image Not deleted")
+        }
     }
     
     
