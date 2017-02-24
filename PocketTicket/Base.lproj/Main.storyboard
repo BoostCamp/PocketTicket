@@ -1384,7 +1384,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="620781DC-9AD6-4A0A-B246-313673283145" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-pT-lXJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1EB73D1E-8800-451D-B49F-9D6A1D15562D" translatesAutoresizingMaskIntoConstraints="NO" id="UQS-pT-lXJ">
                                                     <rect key="frame" x="10" y="0.0" width="83" height="95"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="83" id="y6K-ef-xPl"/>
@@ -1449,6 +1449,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pocket Ticket" id="eaq-WB-AHz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="7tS-qO-Ncc"/>
                         <barButtonItem key="rightBarButtonItem" title="Today" id="nyd-Su-n80">
                             <connections>
                                 <action selector="scrollToToday:" destination="hK5-oE-Rv6" id="zpZ-ov-avp"/>
@@ -1828,6 +1829,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="SwJ-xU-Tr7">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="t4f-NW-Pe4"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="0dy-XF-0Ww">
                             <connections>
                                 <segue destination="Lx6-s1-6dy" kind="presentation" identifier="ToWriteReviewSegue" id="iqg-4I-rhk"/>
@@ -2058,17 +2060,7 @@
     <resources>
         <image name="1D" width="911" height="910"/>
         <image name="1Dcheck" width="911" height="910"/>
-        <image name="1W" width="911" height="910"/>
-        <image name="1Wcheck" width="911" height="910"/>
-        <image name="2W" width="911" height="910"/>
-        <image name="2Wcheck" width="911" height="910"/>
-        <image name="3D" width="911" height="910"/>
-        <image name="3Dcheck" width="910" height="910"/>
-        <image name="3W" width="911" height="910"/>
-        <image name="3Wcheck" width="911" height="910"/>
-        <image name="5D" width="911" height="910"/>
-        <image name="5Dcheck" width="911" height="910"/>
-        <image name="620781DC-9AD6-4A0A-B246-313673283145" width="131" height="155">
+        <image name="1EB73D1E-8800-451D-B49F-9D6A1D15562D" width="131" height="155">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -3475,6 +3467,16 @@ AAFHOgABR0IAAUdPAAFHVAABR1YAAUdYAAFHXQABR2UAAUdoAAFHbQABR3UAAUd4AAFHigABR40AAUeS
 AAAAAAAABAEAAAAAAAAAQQAAAAAAAAAAAAAAAAABR5Q
 </mutableData>
         </image>
+        <image name="1W" width="911" height="910"/>
+        <image name="1Wcheck" width="911" height="910"/>
+        <image name="2W" width="911" height="910"/>
+        <image name="2Wcheck" width="911" height="910"/>
+        <image name="3D" width="911" height="910"/>
+        <image name="3Dcheck" width="910" height="910"/>
+        <image name="3W" width="911" height="910"/>
+        <image name="3Wcheck" width="911" height="910"/>
+        <image name="5D" width="911" height="910"/>
+        <image name="5Dcheck" width="911" height="910"/>
         <image name="actor" width="128" height="128"/>
         <image name="alarm" width="128" height="128"/>
         <image name="calendar" width="128" height="128"/>

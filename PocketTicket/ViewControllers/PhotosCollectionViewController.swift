@@ -32,6 +32,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var imagesDirectoryPath : String!
     var imageNameArray = [String]()
     var firstShow = true
+    var firstTimeAdd = true
     var addImageCount = 0
     
     //indicator
@@ -108,12 +109,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         //추가 된 이미지쪽으로 스크롤 움직이기
         if isAddPhoto{
-            isAddPhoto = false
-            let row = self.totalPhotoNum - self.addImageCount
-            let indexPath = IndexPath(row: row, section:0)
-            self.photoCollectionView.scrollToItem(at: indexPath, at: .left, animated: false)
-            let titleText = "\(row+1) / \(totalPhotoNum)"
-            self.title = titleText
+                isAddPhoto = false
+                let row = self.totalPhotoNum - self.addImageCount
+                let indexPath = IndexPath(row: row, section:0)
+                self.photoCollectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+                let titleText = "\(row+1) / \(totalPhotoNum)"
+                self.title = titleText
+            
         }
         
 
@@ -235,9 +237,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBAction func connectDKImagePicker(_ sender: Any) {
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
+
             print("didSelectAssets")
             print(assets)
             //asset count
+            self.addImageCount = assets.count
             print("here")
 //            self.startIndicator()
          
@@ -251,6 +255,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             //save photos in realm
             self.dataInstance.addPhotos(photos: self.imageNameArray, id: (self.showTicket?.id)!)
+    
             //give alert
             if assets.count > 0 {
                 self.alertActivity("save")

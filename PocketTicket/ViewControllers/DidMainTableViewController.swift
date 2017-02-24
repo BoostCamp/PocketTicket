@@ -185,8 +185,9 @@ class DidMainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailController = self.storyboard?.instantiateViewController(withIdentifier: "TicketDetailViewController") as! TicketDetailViewController
-
-        let currentTicket = ticketList?[indexPath.row]
+        
+        let currentTicketList = self.sectionTicketArray[indexPath.section]
+        let currentTicket = currentTicketList[indexPath.row]
         
         detailController.showTicket = currentTicket
         
