@@ -53,18 +53,19 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         ticketList?.removeAll()
         ticketList = dataInstacne.getTicketList()
         
-        //오늘날짜
-        let today = Date()
+  
         currentMonthTicket.removeAll()
         getCurrentMonthTicket(calendarView)
-        getCurrentDayTicket(today)
+//        getCurrentDayTicket(today)
         ticketTableView.reloadData()
         calendarView.reloadData()
         
         
         self.tabBarController?.tabBar.isHidden = false
         
-        //오늘날짜의 이벤트가 있을 경우 스크롤 
+        //오늘날짜의 이벤트가 있을 경우 스크롤
+        //오늘날짜
+        let today = Date()
         let scrollIndex = compareDate(today)
         if scrollIndex != 0{
             let indexPath = IndexPath(row: scrollIndex, section: 0)
@@ -132,7 +133,6 @@ class CalMainViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         selectedDate = date
 //        getCurrentDayTicket(date)
         ticketTableView.reloadData()
-//        calendar.reloadData()
         
     }
     

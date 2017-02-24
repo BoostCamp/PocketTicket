@@ -29,6 +29,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var genreLabel: UILabel!
     var genreNameList = [String]()
     var genrePickerFlag = false
+    var genreLabelFlag = false
     
     //Properites for Alarm Picker
     var alarmPickFlag = false
@@ -39,6 +40,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var Button5Day: UIButton!
     @IBOutlet weak var Button3Day: UIButton!
     @IBOutlet weak var Button1Day: UIButton!
+    var possibleClickFlag = [true, true, true, true, true, true]
     var clickedFlag = [false, false, false, false, false, false]
     let alarmAllDic = [1:"1일전", 2:"3일전", 3:"5일전", 4:"1주전", 5:"2주전", 6:"3주전"]
     let alarmTimeDic = [1:1, 2:3, 3:5, 4:7, 5:14, 6:21]
@@ -70,6 +72,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         self.title = "New"
         dateFormat.dateFormat = "yyyy.MM.dd a h:mm"
@@ -85,17 +88,16 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
 
         
         if let currentDate = currentDate{
-//            let tempDate = DateComponents()
-            var calendarUnitFlags : Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-
-            
-            var dateComponent = Calendar.current.dateComponents(calendarUnitFlags, from: currentDate)
-            dateComponent.hour = 20
-            dateComponent.minute = 0
-            dateComponent.second = 0
-            let newDate = dateComponent.date
-            print(newDate)
-            dateLabel.text = dateFormat.string(from: datePicker.date)
+//            var calendarUnitFlags : Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+//
+//            
+//            var dateComponent = Calendar.current.dateComponents(calendarUnitFlags, from: currentDate)
+//            dateComponent.hour = 20
+//            dateComponent.minute = 0
+//            dateComponent.second = 0
+//            let newDate = dateComponent.date
+//            print(newDate)
+            datePicker.date = currentDate
         }
         
         
@@ -144,6 +146,7 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     func toggleShowDatepicker () {
         datePickerFlag = !datePickerFlag
         
+        self.dateLabel.text = dateFormat.string(from: datePicker.date)
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -151,8 +154,10 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     //date picker의 값이 바뀌면 detial label 값 변경
     @IBAction func showDatePickerDate(_ sender: Any) {
         let setDate = datePicker.date
-//        let threeDayBefore = NSDate(timeInterval: -24*60*60*7, since: setDate)
-         self.dateLabel.text = dateFormat.string(from: setDate)
+        self.dateLabel.text = dateFormat.string(from: setDate)
+        //date Picker의 값이 바뀌면 Alarm 초기화
+        initButton()
+        
     }
 
     //MARK: - Actions
@@ -277,8 +282,10 @@ extension CalAddViewController{
             //alarm picker show
             if !alarmPickFlag{
                 toggleShowAlarmPicker()
+                //Alarm 설정할 때 오늘보다 이전 날짜는 알람 설정 못하게 계산
+                compareDate()
             }
-                //alarm pick hide & show date in label
+            //alarm pick hide & show date in label
             else{
                 toggleShowAlarmPicker()
             }
@@ -291,7 +298,7 @@ extension CalAddViewController{
             if !genrePickerFlag{
                 toggleShowgenrePicker()
             }
-                //datePicker hide & show date in label
+            //datePicker hide & show date in label
             else{
                 toggleShowgenrePicker()
             }
@@ -344,9 +351,7 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //        if pickerView == genrePickerView{
         return genreNameList.count
-        //        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -355,6 +360,7 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     
     //MARK: Picker View Delegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        genreLabelFlag = true
         genreLabel.text = genreNameList[row]
         
     }
@@ -362,6 +368,10 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     //함수를 호출하면 genre picker show
     func toggleShowgenrePicker () {
         genrePickerFlag = !genrePickerFlag
+        //for first pick
+        if genreLabelFlag == false{
+            genreLabel.text = "뮤지컬"
+        }
         
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -373,6 +383,24 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
 //MARK: - Alarm Pick
 extension CalAddViewController{
     
+    
+    //알람 설정이 가능한지 비교
+    //targetDate가 현재시간 보다 전이면 불가능
+    func compareDate(){
+        let today = Date()
+        let setDate = self.datePicker.date
+        for idx in 1..<7{
+            let targetDate = makeAlarmTrigger(setDate: setDate, index: idx) as Date
+            if targetDate < today{
+                possibleClickFlag[idx-1] = false
+            } else {
+                possibleClickFlag[idx-1] = true
+            }
+        }
+    }
+
+    
+    
     //함수를 호출하면 genre picker show
     func toggleShowAlarmPicker () {
         alarmPickFlag = !alarmPickFlag
@@ -382,9 +410,10 @@ extension CalAddViewController{
     }
     //버튼 눌렀을 때 label에 보임
     @IBAction func buttonPressed(_ sender : UIButton!){
-        print("button pressed")
+        
         let senderTag = sender.tag
-        if clickedFlag[senderTag-1] == false{
+        //날짜가 클릭이 가능하고, deselect상태일 경우, button can pressed
+        if possibleClickFlag[senderTag-1] == true, clickedFlag[senderTag-1] == false{
             sender.isSelected = true
             clickedFlag[senderTag-1] = true
             let alarmListString = addAlarmLabel(senderTag)
@@ -427,6 +456,18 @@ extension CalAddViewController{
         let days = alarmTimeDic[index]! * oneDay
         let setTime = NSDate(timeInterval: TimeInterval(days), since: setDate)
         return setTime
+    }
+    
+    //버튼 초기화
+    func initButton(){
+        for idx in 1..<7{
+            let tmpButton = self.view.viewWithTag(idx) as? UIButton
+            tmpButton?.isSelected = false
+            clickedFlag[idx-1] = false
+        }
+        alarmLabel.text = ""
+        alarmSet.removeAll()
+        
     }
     
 }

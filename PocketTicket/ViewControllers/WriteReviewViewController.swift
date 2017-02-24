@@ -48,7 +48,24 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
         let currentTicketId = currentTicket?.id
         reviewTextView.resignFirstResponder()
         dateInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
-        dismiss(animated: true, completion: nil)
+        
+        alertSaveReview()
+
+    }
+    
+    
+    func alertSaveReview(){
+        let alertController = UIAlertController(title: "알림", message: "리뷰가 저장되었습니다.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        {
+            (result : UIAlertAction) -> Void in
+            self.dismiss(animated: true, completion: nil)
+
+
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     

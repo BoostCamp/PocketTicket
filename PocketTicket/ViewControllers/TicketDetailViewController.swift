@@ -75,7 +75,7 @@ class TicketDetailViewController: UIViewController {
             mainImageView.image = UIImage(contentsOfFile: getImagePath)
             
         } else{
-            mainImageView.image = #imageLiteral(resourceName: "addMainPhoto")
+            mainImageView.image = #imageLiteral(resourceName: "addPhoto")
         }
     }
     
