@@ -24,7 +24,7 @@
   - [RealmSwift](https://realm.io/)
   - [NaverMapApi](https://developers.naver.com/docs/map/ios/)
   - [FSCalendar](https://github.com/WenchaoD/FSCalendar)
-  - [DKImagePicker](https://github.com/zhangao0086/DKImagePickerController),
+  - [DKImagePicker](https://github.com/zhangao0086/DKImagePickerController)
 
 ## Info
 
