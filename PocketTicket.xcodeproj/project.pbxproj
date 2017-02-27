@@ -22,17 +22,12 @@
 		9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF6F1E4C4B8D00DD1333 /* Genre.swift */; };
 		9F28EF721E4C4B9500DD1333 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28EF711E4C4B9500DD1333 /* Ticket.swift */; };
 		9F4F07651E541863009ED7E6 /* CalMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4F07641E541863009ED7E6 /* CalMainTableViewCell.swift */; };
-		9F5337451E530846007C1C97 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5337441E530846007C1C97 /* TestViewController.swift */; };
 		9F5337471E53E6D4007C1C97 /* DidMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5337461E53E6D4007C1C97 /* DidMainTableViewController.swift */; };
 		9F5337491E53E71C007C1C97 /* DidMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5337481E53E71C007C1C97 /* DidMainTableViewCell.swift */; };
-		9F53374B1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53374A1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift */; };
-		9F53374D1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F53374C1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift */; };
-		9F579C501E4D79BE00086FC6 /* TicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */; };
 		9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C65671E49A9A5009074F0 /* AppDelegate.swift */; };
 		9F6C656D1E49A9A5009074F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656B1E49A9A5009074F0 /* Main.storyboard */; };
 		9F6C656F1E49A9A5009074F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C656E1E49A9A5009074F0 /* Assets.xcassets */; };
 		9F6C65721E49A9A5009074F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F6C65701E49A9A5009074F0 /* LaunchScreen.storyboard */; };
-		9FB235ED1E4DF4E300796196 /* TicketFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */; };
 		9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996811E4C028E00960561 /* CalMainViewController.swift */; };
 		9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB996831E4C02E900960561 /* CalAddViewController.swift */; };
 		9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */; };
@@ -42,8 +37,6 @@
 		9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69011E5B355D009BE798 /* ContentsViewController.swift */; };
 		9FEC69041E5C31CD009BE798 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEC69031E5C31CD009BE798 /* NotificationManager.swift */; };
 		9FFD5B651E553D66006BCA1D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFD5B641E553D66006BCA1D /* DataController.swift */; };
-		9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */; };
-		9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,19 +57,14 @@
 		9F28EF711E4C4B9500DD1333 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketTicket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4F07641E541863009ED7E6 /* CalMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalMainTableViewCell.swift; sourceTree = "<group>"; };
-		9F5337441E530846007C1C97 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9F5337461E53E6D4007C1C97 /* DidMainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidMainTableViewController.swift; sourceTree = "<group>"; };
 		9F5337481E53E71C007C1C97 /* DidMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidMainTableViewCell.swift; sourceTree = "<group>"; };
-		9F53374A1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachTicketsCollectionViewController.swift; sourceTree = "<group>"; };
-		9F53374C1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachTicketsCollectionViewCell.swift; sourceTree = "<group>"; };
-		9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F6C65641E49A9A5009074F0 /* PocketTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6C65671E49A9A5009074F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F6C656C1E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F6C656E1E49A9A5009074F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F6C65711E49A9A5009074F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F6C65731E49A9A5009074F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketFilterTableViewController.swift; sourceTree = "<group>"; };
 		9FB996811E4C028E00960561 /* CalMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalMainViewController.swift; sourceTree = "<group>"; };
 		9FB996831E4C02E900960561 /* CalAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalAddViewController.swift; sourceTree = "<group>"; };
 		9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
@@ -86,8 +74,6 @@
 		9FEC69011E5B355D009BE798 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		9FEC69031E5C31CD009BE798 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9FFD5B641E553D66006BCA1D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalDailyViewController.swift; sourceTree = "<group>"; };
-		9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketMainViewController.swift; sourceTree = "<group>"; };
 		A2F43CEF461E389B49B20210 /* Pods-PocketTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,20 +176,6 @@
 			name = Tickets;
 			sourceTree = "<group>";
 		};
-		9FFD5B621E553CC8006BCA1D /* ETC */ = {
-			isa = PBXGroup;
-			children = (
-				9F53374C1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift */,
-				9F53374A1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift */,
-				9FFDBA2E1E49C1F100524FBA /* CalDailyViewController.swift */,
-				9FFDBA3A1E49C27600524FBA /* TicketMainViewController.swift */,
-				9F579C4F1E4D79BE00086FC6 /* TicketCollectionViewCell.swift */,
-				9FB235EC1E4DF4E300796196 /* TicketFilterTableViewController.swift */,
-				9F5337441E530846007C1C97 /* TestViewController.swift */,
-			);
-			name = ETC;
-			sourceTree = "<group>";
-		};
 		9FFD5B631E553CDE006BCA1D /* DataController */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +190,6 @@
 			children = (
 				9FFD5B601E553C7A006BCA1D /* Calendar */,
 				9FFD5B611E553C98006BCA1D /* Tickets */,
-				9FFD5B621E553CC8006BCA1D /* ETC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -360,31 +331,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F579C501E4D79BE00086FC6 /* TicketCollectionViewCell.swift in Sources */,
 				9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */,
-				9F5337451E530846007C1C97 /* TestViewController.swift in Sources */,
-				9FB235ED1E4DF4E300796196 /* TicketFilterTableViewController.swift in Sources */,
 				9F28EF631E4C3B4D00DD1333 /* RealmController.swift in Sources */,
 				9F0D7ABB1E52214000FB2FCB /* NMapViewResources.swift in Sources */,
 				9F0291521E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift in Sources */,
 				9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */,
-				9FFDBA3B1E49C27600524FBA /* TicketMainViewController.swift in Sources */,
 				9F4F07651E541863009ED7E6 /* CalMainTableViewCell.swift in Sources */,
 				9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */,
 				9F28EF721E4C4B9500DD1333 /* Ticket.swift in Sources */,
 				9FEC69041E5C31CD009BE798 /* NotificationManager.swift in Sources */,
 				9F5337471E53E6D4007C1C97 /* DidMainTableViewController.swift in Sources */,
-				9F53374B1E53F04B007C1C97 /* EachTicketsCollectionViewController.swift in Sources */,
 				9FB996841E4C02E900960561 /* CalAddViewController.swift in Sources */,
 				9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */,
 				9FEC69021E5B355D009BE798 /* ContentsViewController.swift in Sources */,
 				9F0D7AA51E50B36100FB2FCB /* WriteReviewViewController.swift in Sources */,
 				9FD86CFC1E5E84CA00B50F80 /* Alarm.swift in Sources */,
 				9FEC69001E5B354F009BE798 /* ReviewViewController.swift in Sources */,
-				9FFDBA2F1E49C1F100524FBA /* CalDailyViewController.swift in Sources */,
 				9F5337491E53E71C007C1C97 /* DidMainTableViewCell.swift in Sources */,
 				9F28EF6E1E4C4B8200DD1333 /* Theater.swift in Sources */,
-				9F53374D1E53F39C007C1C97 /* EachTicketsCollectionViewCell.swift in Sources */,
 				9FFD5B651E553D66006BCA1D /* DataController.swift in Sources */,
 				9F0D7AB91E52162700FB2FCB /* SearchMapViewController.swift in Sources */,
 				9F6C65681E49A9A5009074F0 /* AppDelegate.swift in Sources */,
