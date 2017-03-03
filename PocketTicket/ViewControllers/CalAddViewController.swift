@@ -54,14 +54,12 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     @IBOutlet weak var seatTextField: UITextField!
     @IBOutlet weak var actorTextField: UITextField!
     
-    //Label
-    
     //Properties for theater
     @IBOutlet weak var theaterNameLabel: UILabel!
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var routeButton: UIButton!
     
-    //get theater data from map view by tuple
+    //Get theater data from map view by tuple
     var theaterData : (theaterName: String, longtitude: Double, latitude: Double, mapSelectedImage: UIImage, locationDetail: String)? = nil
     var locationDetail : String = ""
     
@@ -73,108 +71,66 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         self.title = "New"
         dateFormat.dateFormat = "yyyy.MM.dd a h:mm"
-        
+        self.routeButton.isHidden = true
+
         titleTextField.delegate = self
         seatTextField.delegate = self
         actorTextField.delegate = self
     
         //Make genre name list
-        getGenreNameList()
-        
-        routeButton.isHidden = true
-
+        self.getGenreNameList()
         
         if let currentDate = currentDate{
-//            var calendarUnitFlags : Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
-//
-//            
-//            var dateComponent = Calendar.current.dateComponents(calendarUnitFlags, from: currentDate)
-//            dateComponent.hour = 20
-//            dateComponent.minute = 0
-//            dateComponent.second = 0
-//            let newDate = dateComponent.date
-//            print(newDate)
             datePicker.date = currentDate
         }
-        
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-        
 
-        //Map에서 받아 온 theater 정보 설정 : 이미지, 위치이름
-        if let theaterData = theaterData{
-            mapImageView.image = theaterData.mapSelectedImage
-            theaterNameLabel.text = theaterData.theaterName
-            locationDetail = theaterData.locationDetail
-            print(locationDetail)
-        } else{
-            print("fail")
+        //Set theater data from Map view : map image, theater name, location detail
+        if let theaterData = self.theaterData{
+            self.mapImageView.image = theaterData.mapSelectedImage
+            self.theaterNameLabel.text = theaterData.theaterName
+            self.locationDetail = theaterData.locationDetail
         }
         
-        //show data
+        //Show data
         if showFlag {
             showSelectedTicket()
             self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = nil
             self.tabBarController?.tabBar.isHidden = true
-            routeButton.isHidden = false
-            showFlag = false
+            self.routeButton.isHidden = false
+            self.showFlag = false
             self.title = showTicket?.name
-            //tableview 선택 안됨
-            tableView.allowsSelection = false
-            //textField 수정 안됨
-            titleTextField.isUserInteractionEnabled = false
-            seatTextField.isUserInteractionEnabled = false
-            actorTextField.isUserInteractionEnabled = false
-        } else{
-            print("fail")
-         
+            //tableview cannot select
+            self.tableView.allowsSelection = false
+            //textField cannot edit
+            self.titleTextField.isUserInteractionEnabled = false
+            self.seatTextField.isUserInteractionEnabled = false
+            self.actorTextField.isUserInteractionEnabled = false
         }
     }
     
-    // MARK: - Date Picker
-    //함수를 호출하면 datapicker show
-    func toggleShowDatepicker () {
-        datePickerFlag = !datePickerFlag
-        
-        self.dateLabel.text = dateFormat.string(from: datePicker.date)
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
-    //date picker의 값이 바뀌면 detial label 값 변경
-    @IBAction func showDatePickerDate(_ sender: Any) {
-        let setDate = datePicker.date
-        self.dateLabel.text = dateFormat.string(from: setDate)
-        //date Picker의 값이 바뀌면 Alarm 초기화
-        initButton()
-        
-    }
+
 
     //MARK: - Actions
-    //for unwind
+    //Unwind from SearchMapController
     @IBAction func unwindToCalAddViewController(segue: UIStoryboardSegue){
-        print("unwind")
     }
+    
+    //Find Route - using SafariViewController
     @IBAction func findRoute(_ sender: Any) {
-        print("find route button tapped")
         var urlString = "https://m.map.naver.com/search2/search.nhn?query="
-        print("location Detial : \(locationDetail)")
+        //locationDetail -> url encoding
         let escapedString = locationDetail.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         urlString += escapedString!
 
         let sfViewController = SFSafariViewController(url: NSURL(string: urlString)! as URL, entersReaderIfAvailable: false)
         self.present(sfViewController, animated: true, completion: nil)
-     
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -182,47 +138,45 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     }
     
     
-    //MARK: - Save datas
+    //MARK: Save data
     @IBAction func saveAction(_ sender: Any) {
         var theaterId : Int = 0
+        var theaterObject : Theater?
         var ticketId : Int = 0
         var alarmObjectArray = [Alarm]()
-        //save theater
-        if let theaterData = theaterData{
-            theaterId = dataInstacne.addTheaterData(name: theaterData.theaterName, latitude: theaterData.latitude, longtitude: theaterData.longtitude, mapImage: theaterData.mapSelectedImage, locationDetail: theaterData.locationDetail)
+        //save theater in realm
+        if let theaterData = self.theaterData{
+            theaterId = self.dataInstacne.addTheaterData(name: theaterData.theaterName, latitude: theaterData.latitude, longtitude: theaterData.longtitude, mapImage: theaterData.mapSelectedImage, locationDetail: theaterData.locationDetail)
         }
         
-        //save alarm 
-        for index in alarmSet{
-            let timeTrigger = makeAlarmTrigger(setDate: datePicker.date, index: index)
+        //save alarm in realm
+        for index in self.alarmSet{
+            let timeTrigger = self.makeAlarmTrigger(setDate: datePicker.date, index: index)
             let contentTitle = self.titleTextField.text
-            let remain = alarmAllDic[index]!
+            let remain = self.alarmAllDic[index]!
             let contentBody = "공연 \(remain) 입니다!"
-            let alarmObject = dataInstacne.addAlarmData(setTime: timeTrigger, contentTitle: contentTitle!, contentBody: contentBody)
+            let alarmObject = self.dataInstacne.addAlarmData(setTime: timeTrigger, contentTitle: contentTitle!, contentBody: contentBody)
             alarmObjectArray.append(alarmObject)
         }
         
-        //save ticket
-        if theaterId != 0{
-            let theaterObject = dataInstacne.getTheaterById(theaterId)
-            ticketId = dataInstacne.addBasicContents(name: self.titleTextField.text!, seat: self.seatTextField.text, date: self.datePicker.date as NSDate, genre: self.genreLabel.text!, theater: theaterObject, actor: self.actorTextField.text, alarmLabel: self.alarmLabel.text)
+        //save ticket in realm
+        //Get theater object
+        if theaterId > 0{
+            theaterObject = self.dataInstacne.getTheaterById(theaterId)
         }
+        ticketId = self.dataInstacne.addBasicContents(name: self.titleTextField.text!, seat: self.seatTextField.text, date: self.datePicker.date as NSDate, genre: self.genreLabel.text!, theater: theaterObject, actor: self.actorTextField.text, alarmLabel: self.alarmLabel.text)
         
         //save alarm objects in ticket
         if alarmObjectArray.count > 0{
-            dataInstacne.addAlarmObjectInTicket(alarms: alarmObjectArray, id: ticketId)
+            self.dataInstacne.addAlarmObjectInTicket(alarms: alarmObjectArray, id: ticketId)
         }
         
-        //save in notification 
+        //save alarm in notification
         for alarm in alarmObjectArray{
-            ticketNotfication.setNotification(identifier: "\(alarm.id)", title: alarm.contentTitle, body: alarm.contentBody, setTime: alarm.triggerTime)
+            self.ticketNotfication.setNotification(identifier: "\(alarm.id)", title: alarm.contentTitle, body: alarm.contentBody, setTime: alarm.triggerTime)
         }
         
         ticketNotfication.showList()
-//        notficationManager.title = titleTextField.text!
-//        notficationManager.body = "공연 \(alarmAllDic[1]!)입니다!"
-//        notficationManager.setNotification()
-//        notficationManager.showList()
         dismiss(animated: true, completion: nil)
     }
     
@@ -230,12 +184,6 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
     func showSelectedTicket(){
         if let showTicket = showTicket{
             
-            dateFormat.dateFormat = "yyyy.MM.dd ah:mm"
-//            if let currentDate = currentDate{
-//                dateLabel.text = dateFormat.string(from: currentDate)
-//                datePicker.date = currentDate
-//            }
-
             self.titleTextField.text = showTicket.name
             self.seatTextField.text = showTicket.seat
             self.datePicker.date = showTicket.date as Date
@@ -247,16 +195,37 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
             self.mapImageView.image = tempImage
             self.locationDetail = (showTicket.theater?.locationDetail)!
             if showTicket.alarmLabel == ""{
-                print("알람없다")
                 self.alarmLabel.text = "알람없음"
             } else{
-                print("알람있다")
                 self.alarmLabel.text = showTicket.alarmLabel
             }
         }
     }
     
-
+    // MARK: - Date Picker
+    //함수를 호출하면 datapicker show
+    func toggleShowDatepicker () {
+        self.datePickerFlag = !datePickerFlag
+        
+        self.dateLabel.text = dateFormat.string(from: datePicker.date)
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
+    //date picker의 값이 바뀌면 detial label 값 변경
+    @IBAction func showDatePickerDate(_ sender: Any) {
+        let setDate = datePicker.date
+        self.dateLabel.text = self.dateFormat.string(from: setDate)
+        //date Picker의 값이 바뀌면 Alarm 초기화
+        self.initButton()
+    }
+    
+    //MARK: - TextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Hide keyboard
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 
@@ -264,32 +233,32 @@ class CalAddViewController: UITableViewController, UITextFieldDelegate{
 extension CalAddViewController{
     //row 선택시 이벤트
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+       
         //Date row를 클릭하면
         if indexPath.section == 1 && indexPath.row == 2
         {
             //datePicker show
-            if !datePickerFlag{
-                toggleShowDatepicker()
+            if !self.datePickerFlag{
+                self.toggleShowDatepicker()
             }
-                //datePicker hide & show date in label
+            //datePicker hide
             else{
-                toggleShowDatepicker()
+                self.toggleShowDatepicker()
             }
         }
-        
         
         //Alarm row를 클릭하면
         if indexPath.section == 1 && indexPath.row == 4
         {
             //alarm picker show
-            if !alarmPickFlag{
-                toggleShowAlarmPicker()
+            if !self.alarmPickFlag{
+                self.toggleShowAlarmPicker()
                 //Alarm 설정할 때 오늘보다 이전 날짜는 알람 설정 못하게 계산
-                compareDate()
+                self.compareDate()
             }
             //alarm pick hide & show date in label
             else{
-                toggleShowAlarmPicker()
+                self.toggleShowAlarmPicker()
             }
         }
         
@@ -298,29 +267,26 @@ extension CalAddViewController{
         {
             //genre picker show
             if !genrePickerFlag{
-                toggleShowgenrePicker()
+                self.toggleShowgenrePicker()
             }
             //datePicker hide & show date in label
             else{
-                toggleShowgenrePicker()
+                self.toggleShowgenrePicker()
             }
         }
-        
-       
-        
     }
     
     //row height 정하기
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //Hide 되어 있어야 할 경우 date picker의 height를 0으로 줌
-        if !datePickerFlag && indexPath.section == 1 && indexPath.row == 3 {
+        if !self.datePickerFlag && indexPath.section == 1 && indexPath.row == 3 {
             return 0
-        } else if !genrePickerFlag && indexPath.section == 1 && indexPath.row == 7{
+        } else if !self.genrePickerFlag && indexPath.section == 1 && indexPath.row == 7{
             return 0
-        } else if !alarmPickFlag && indexPath.section == 1 && indexPath.row == 5{
+        } else if !self.alarmPickFlag && indexPath.section == 1 && indexPath.row == 5{
             return 0
         }
-            //height를 원래 크기로
+        //height를 원래 크기로
         else {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
@@ -341,42 +307,41 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     func getGenreNameList(){
         let genreList = dataInstacne.getGenreList()
         for genre in genreList{
-            genreNameList.append(genre.genreName)
+            self.genreNameList.append(genre.genreName)
         }
     }
-    
-    
+
     //MARK: Picker View DataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return genreNameList.count
+        return self.genreNameList.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return genreNameList[row]
+        return self.genreNameList[row]
     }
     
     //MARK: Picker View Delegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        genreLabelFlag = true
-        genreLabel.text = genreNameList[row]
+        //picker가 움직였는지 확인하는 flag
+        self.genreLabelFlag = true
+        self.genreLabel.text = self.genreNameList[row]
         
     }
     
     //함수를 호출하면 genre picker show
     func toggleShowgenrePicker () {
-        genrePickerFlag = !genrePickerFlag
+        self.genrePickerFlag = !self.genrePickerFlag
         //for first pick
-        if genreLabelFlag == false{
-            genreLabel.text = "뮤지컬"
+        if self.genreLabelFlag == false{
+            self.genreLabel.text = "뮤지컬"
         }
         
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
 
 }
@@ -386,104 +351,84 @@ extension CalAddViewController : UIPickerViewDelegate, UIPickerViewDataSource{
 extension CalAddViewController{
     
     
+    //함수를 호출하면 alarm picker show
+    func toggleShowAlarmPicker () {
+        self.alarmPickFlag = !self.alarmPickFlag
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
+    
     //알람 설정이 가능한지 비교
     //targetDate가 현재시간 보다 전이면 불가능
     func compareDate(){
         let today = Date()
         let setDate = self.datePicker.date
         for idx in 1..<7{
-            let targetDate = makeAlarmTrigger(setDate: setDate, index: idx) as Date
+            let targetDate = self.makeAlarmTrigger(setDate: setDate, index: idx) as Date
             if targetDate < today{
-                possibleClickFlag[idx-1] = false
+                self.possibleClickFlag[idx-1] = false
             } else {
-                possibleClickFlag[idx-1] = true
+                self.possibleClickFlag[idx-1] = true
             }
         }
     }
-
     
     
-    //함수를 호출하면 genre picker show
-    func toggleShowAlarmPicker () {
-        alarmPickFlag = !alarmPickFlag
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    //make alarm trigger
+    func makeAlarmTrigger(setDate: Date, index: Int) -> NSDate{
+        let oneDay = -24*60*60
+        let days = self.alarmTimeDic[index]! * oneDay
+        let setTime = NSDate(timeInterval: TimeInterval(days), since: setDate)
+        return setTime
     }
+    
+    //버튼 초기화 -> Date 바뀔 때
+    func initButton(){
+        for idx in 1..<7{
+            let tmpButton = self.view.viewWithTag(idx) as? UIButton
+            tmpButton?.isSelected = false
+            self.clickedFlag[idx-1] = false
+        }
+        self.alarmLabel.text = ""
+        self.alarmSet.removeAll()
+        
+    }
+
     //버튼 눌렀을 때 label에 보임
     @IBAction func buttonPressed(_ sender : UIButton!){
         
         let senderTag = sender.tag
         //날짜가 클릭이 가능하고, deselect상태일 경우, button can pressed
-        if possibleClickFlag[senderTag-1] == true, clickedFlag[senderTag-1] == false{
+        if self.possibleClickFlag[senderTag-1] == true, self.clickedFlag[senderTag-1] == false{
             sender.isSelected = true
-            clickedFlag[senderTag-1] = true
-            let alarmListString = addAlarmLabel(senderTag)
-            alarmLabel.text = alarmListString
+            self.clickedFlag[senderTag-1] = true
+            self.makeAlarmLabel(tag: senderTag, addFlag: true)
         }
         else if clickedFlag[senderTag-1] == true{
             sender.isSelected = false
-            clickedFlag[senderTag-1] = false
-            let alarmListString = removeAlarmLabel(senderTag)
-            alarmLabel.text = alarmListString
+            self.clickedFlag[senderTag-1] = false
+            self.makeAlarmLabel(tag: senderTag, addFlag: false)
         }
 
     }
     
-    //버튼이 select될 때 add
-    func addAlarmLabel(_ tag: Int) -> String{
-        self.alarmSet.insert(tag)
+    func makeAlarmLabel(tag: Int, addFlag: Bool){
+        if addFlag {
+            self.alarmSet.insert(tag)
+        } else{
+            self.alarmSet.remove(tag)
+        }
         var alarmListString = ""
         for index in self.alarmSet.sorted(){
-            alarmListString += alarmAllDic[index]!
+            alarmListString += self.alarmAllDic[index]!
             alarmListString += " "
         }
-        return alarmListString
-    }
-    
-    //버튼이 deselect될 때 remove
-    func removeAlarmLabel(_ tag: Int) -> String{
-        self.alarmSet.remove(tag)
-        var alarmListString = ""
-        for index in self.alarmSet.sorted(){
-            alarmListString += alarmAllDic[index]!
-            alarmListString += " "
-        }
-        return alarmListString
-    }
-    
-    //make alarm db
-    func makeAlarmTrigger(setDate: Date, index: Int) -> NSDate{
-        let oneDay = -24*60*60
-        let days = alarmTimeDic[index]! * oneDay
-        let setTime = NSDate(timeInterval: TimeInterval(days), since: setDate)
-        return setTime
-    }
-    
-    //버튼 초기화
-    func initButton(){
-        for idx in 1..<7{
-            let tmpButton = self.view.viewWithTag(idx) as? UIButton
-            tmpButton?.isSelected = false
-            clickedFlag[idx-1] = false
-        }
-        alarmLabel.text = ""
-        alarmSet.removeAll()
-        
+        self.alarmLabel.text = alarmListString
     }
     
 }
 
-//MARK: - TextField
-extension CalAddViewController{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //Hide keyboard
-        textField.resignFirstResponder()
-        return true
-    }
-
-
-
-}
 
 

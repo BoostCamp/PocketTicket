@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F22CC4527F7C1335E0FABDB /* Pods_PocketTicket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F42EA88389AF05663D0D155 /* Pods_PocketTicket.framework */; };
-		9F0291521E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */; };
+		9F0291521E4D9AEE00B9F7C8 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0291511E4D9AEE00B9F7C8 /* PhotosViewController.swift */; };
 		9F0291541E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */; };
 		9F055F5F1E4AE5E7008E390A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F055F5E1E4AE5E7008E390A /* Realm.framework */; };
 		9F055F611E4AE5EC008E390A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F055F601E4AE5EC008E390A /* RealmSwift.framework */; };
@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		6182BFA12A8413657F62ACB2 /* Pods-PocketTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketTicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PocketTicket/Pods-PocketTicket.debug.xcconfig"; sourceTree = "<group>"; };
-		9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		9F0291511E4D9AEE00B9F7C8 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F055F5E1E4AE5E7008E390A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
 		9F055F601E4AE5EC008E390A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PocketTicket-grjlodpwzvazuaceoxfpjqueeeto/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				9F5337481E53E71C007C1C97 /* DidMainTableViewCell.swift */,
 				9FBBE2611E5810F80085245D /* TicketDetailViewController.swift */,
 				9F0D7AA41E50B36100FB2FCB /* WriteReviewViewController.swift */,
-				9F0291511E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift */,
+				9F0291511E4D9AEE00B9F7C8 /* PhotosViewController.swift */,
 				9F0291531E4D9AFE00B9F7C8 /* PhotosCollectionViewCell.swift */,
 				9FEC68FF1E5B354F009BE798 /* ReviewViewController.swift */,
 				9FEC69011E5B355D009BE798 /* ContentsViewController.swift */,
@@ -334,7 +334,7 @@
 				9FB996821E4C028E00960561 /* CalMainViewController.swift in Sources */,
 				9F28EF631E4C3B4D00DD1333 /* RealmController.swift in Sources */,
 				9F0D7ABB1E52214000FB2FCB /* NMapViewResources.swift in Sources */,
-				9F0291521E4D9AEE00B9F7C8 /* PhotosCollectionViewController.swift in Sources */,
+				9F0291521E4D9AEE00B9F7C8 /* PhotosViewController.swift in Sources */,
 				9F28EF701E4C4B8D00DD1333 /* Genre.swift in Sources */,
 				9F4F07651E541863009ED7E6 /* CalMainTableViewCell.swift in Sources */,
 				9FBBE2621E5810F80085245D /* TicketDetailViewController.swift in Sources */,

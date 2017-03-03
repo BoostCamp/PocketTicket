@@ -10,70 +10,58 @@ import UIKit
 
 class DidMainTableViewController: UITableViewController {
 
+    //MARK: - Properties
     //Data Controller Singelton
     let dataInstance = DataController.sharedInstance()
     var ticketList : [Ticket]? = nil
     
-    //temp
-    let notficationManager = NotificationManager()
-    let dateFormat = DateFormatter()
-
-    @IBOutlet var ticketTableView: UITableView!
-    
-    let today = Date()
-    
-    //for divide table section 
+    //for divide table section
     var lastTicket = [Ticket]()
     var todayTicket = [Ticket]()
     var upcomingTicket = [Ticket]()
     let sectionNameArray = ["Last", "Today", "Upcoming"]
     var sectionTicketArray = [[Ticket]]()
     
-    var moveToDetailFlag = false
+    //temp
+    @IBOutlet var ticketTableView: UITableView!
+    let dateFormat = DateFormatter()
+    let today = Date()
+    var calTabBarFlag = false
     
     
+    //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false
-        
-        
+//        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.dateFormat.dateFormat = "yyyy.MM.dd EE ah:mm"
 
-        self.ticketList = dataInstance.getTicketList()
-        
-        if let ticketList = self.ticketList{
-            print("divide again")
-            print("\(ticketList.count)")
-            divideTicket(ticketList)
-        }
-        
-//        tableView.reloadData()
-        
-        
-        if !moveToDetailFlag {
+        self.ticketList = self.dataInstance.getTicketList()
+
+        //From calendar tab bar -> divide ticket, scroll to today
+        if self.calTabBarFlag {
+            self.divideTicket(ticketList!)
             let indexPath = IndexPath(row: 0, section: 1)
-            ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+            self.ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+            self.calTabBarFlag = false
         }
         
      
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-    }
     
-
+    
+    //MARK: - Scroll to today's tickets
     @IBAction func scrollToToday(_ sender: Any) {
         let indexPath = IndexPath(row: 0, section: 1)
-        ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
-
+        self.ticketTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
     
-    //func divide ticket by date
+    //MARK: - Divide ticket by date
     func divideTicket(_ ticketList : [Ticket]){
         self.sectionTicketArray.removeAll()
         self.lastTicket.removeAll()
@@ -105,7 +93,6 @@ class DidMainTableViewController: UITableViewController {
 
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionNameArray.count
     }
@@ -131,29 +118,26 @@ class DidMainTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DidMainTableViewCell", for: indexPath) as! DidMainTableViewCell
         let currentTicketList = self.sectionTicketArray[indexPath.section]
         
+        //ticket list가 있는 경우
         if currentTicketList.count > 0{
             cell.containView.isHidden = false
             cell.notLabel.isHidden = true
             
-
             let currentTicket = currentTicketList[indexPath.row]
         
-        
-            dateFormat.dateFormat = "yyyy.MM.dd EE ah:mm"
             let currentTicketDate = currentTicket.date as Date
-            let currentTicketDateString =   dateFormat.string(from: currentTicket.date as Date)
-        
             //compare date -> after / before
-            let currentTime = Date()
-        
-            if currentTicketDate < currentTime {
+            if currentTicketDate < today {
                 cell.checkImage.image = UIImage(named: "after")
             } else{
                 cell.checkImage.image = UIImage(named: "before")
             }
     
+            let currentTicketDateString = self.dateFormat.string(from: currentTicket.date as Date)
             cell.dateLabel.text = currentTicketDateString
+            
             cell.titleLable.text = currentTicket.name
+            
             if let oneSentece = currentTicket.oneSentence{
                 cell.oneSentenceLabel.text = oneSentece
                 cell.oneSentenceLabel.textColor = UIColor.black
@@ -182,6 +166,7 @@ class DidMainTableViewController: UITableViewController {
     }
 
     //MARK: - Table View Delegate
+    //Move to ticket detail 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailController = self.storyboard?.instantiateViewController(withIdentifier: "TicketDetailViewController") as! TicketDetailViewController
@@ -191,11 +176,11 @@ class DidMainTableViewController: UITableViewController {
         
         detailController.showTicket = currentTicket
         
-        moveToDetailFlag = true
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }
 
 
 }
+
 

@@ -10,8 +10,8 @@ import UIKit
 
 class ContentsViewController: UIViewController {
 
-    var currentTicket : Ticket?
 
+    //MARK: - Properties
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var theaterLabel: UILabel!
@@ -19,38 +19,41 @@ class ContentsViewController: UIViewController {
     @IBOutlet weak var seatLabel: UILabel!
     @IBOutlet weak var actorLabel: UILabel!
     
+    var currentTicket : Ticket?
     
+    //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if currentTicket != nil{
-            setData()
-        } else {
+        
+        if self.currentTicket != nil{
+            self.setData()
         }
     }
     
+    //MARK: - Set data
     func setData(){
         //Genre
-        self.genreLabel.text = currentTicket?.genre
+        self.genreLabel.text = self.currentTicket?.genre
         
         //Date
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy.MM.dd EE ah:mm"
-        let selectedDate = currentTicket?.date
+        let selectedDate = self.currentTicket?.date
         let dateString = dateFormat.string(from: selectedDate as! Date)
         self.dateLabel.text = dateString
         
         //theater 
-        self.theaterLabel.text = currentTicket?.theater?.theaterName
+        self.theaterLabel.text = self.currentTicket?.theater?.theaterName
         
         //Seat
-        self.seatLabel.text = currentTicket?.seat
+        self.seatLabel.text = self.currentTicket?.seat
         
         //actor
-        self.actorLabel.text = currentTicket?.actor
+        self.actorLabel.text = self.currentTicket?.actor
         
 
     }

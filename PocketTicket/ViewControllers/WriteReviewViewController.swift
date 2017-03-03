@@ -10,12 +10,14 @@ import UIKit
 
 class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
  
-    let dateInstance = DataController.sharedInstance()
+    //MARK: - Properties
+    //Data singleton
+    let dataInstance = DataController.sharedInstance()
+    var currentTicket : Ticket? = nil
     
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var oneSentenceTextView: UITextField!
     
-    var currentTicket : Ticket? = nil
     
     //MARK: - App Life Cycle
     override func viewDidLoad() {
@@ -24,11 +26,10 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if currentTicket != nil{
-            setData()
+        if self.currentTicket != nil{
+            self.setData()
         }
     }
-    
     
    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,74 +38,66 @@ class WriteReviewViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     
-    //cancel
+    //MARK: - Actions
+    //Cancel
     @IBAction func dismissView(_ sender: Any) {
+        //keyboard resign
         oneSentenceTextView.resignFirstResponder()
         reviewTextView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
 
+    //Save
     @IBAction func saveReview(_ sender: Any) {
         let currentTicketId = currentTicket?.id
-//        reviewTextView.resignFirstResponder()
-        self.dateInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
-        
+        //save in realm
+        self.dataInstance.addReview(review: reviewTextView.text, oneSentece: oneSentenceTextView.text!, id: currentTicketId!)
+        //keyboard resign
         self.reviewTextView.resignFirstResponder()
         self.oneSentenceTextView.resignFirstResponder()
+        //alert
         self.alertSaveReview()
-//        self.reviewTextView.resignFirstResponder()
-//        self.oneSentenceTextView.resignFirstResponder()
-//        self.dismiss(animated: true, completion: nil)
 
     }
     
-    
+    //MARK: - Alert
     func alertSaveReview(){
         let alertController = UIAlertController(title: "알림", message: "리뷰가 저장되었습니다.", preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
         {
             (result : UIAlertAction) -> Void in
-            print("yap")
             self.dismiss(animated: true, completion: nil)
-//            self.dismiss(animated: true, completion: nil)
-
-
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
+    //MARK: - Set data
     func setData(){
-        if let oneSentence = currentTicket?.oneSentence{
-            oneSentenceTextView.text = oneSentence
+        //one sentence
+        if let oneSentence = self.currentTicket?.oneSentence{
+            self.oneSentenceTextView.text = oneSentence
         }
         
-        if let review = currentTicket?.review{
-            reviewTextView.text = review
-            reviewTextView.textColor = UIColor.black
+        //review
+        if let reviewTemp = self.currentTicket?.review, reviewTemp != ""{
+            self.reviewTextView.text = reviewTemp
+            self.reviewTextView.textColor = UIColor.black
         } else{
-            reviewTextView.text = "리뷰를 입력하세요"
-            reviewTextView.textColor = UIColor.lightGray
+            self.reviewTextView.text = "리뷰를 입력하세요"
+            self.reviewTextView.textColor = UIColor.lightGray
         }
     }
-}
-
-
-//MAARK: - Text Field Delegate
-extension WriteReviewViewController{
+    //MAARK: - Text Field Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(textField.isEqual(self.oneSentenceTextView)){ //titleField에서 리턴키를 눌렀다면
-            self.reviewTextView.becomeFirstResponder()//컨텐츠필드로 포커스 이동
+            self.reviewTextView.becomeFirstResponder()//review text view로 keyboard 포커스 이동
         }
         return false
     }
-}
-
-
-//MARK: - TextView Delegate
-extension WriteReviewViewController{
+    
+    //MARK: - TextView Delegate
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if reviewTextView.text == "리뷰를 입력하세요"{
             textView.text = ""
@@ -112,7 +105,8 @@ extension WriteReviewViewController{
         textView.textColor = UIColor.black
         return true
     }
+
+    
+
 }
-
-
 

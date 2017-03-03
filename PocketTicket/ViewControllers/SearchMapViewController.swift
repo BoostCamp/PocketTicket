@@ -47,9 +47,6 @@ class SearchMapViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.tableView.reloadData()
         
-        
-//        self.automaticallyAdjustsScrollViewInsets = false
-        
 
         self.searchController.searchBar.barTintColor = UIColor(red: 235/255, green: 72/255, blue: 79/255, alpha: 1.0)
         

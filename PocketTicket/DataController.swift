@@ -84,7 +84,7 @@ class DataController{
     //MARK: - Add Data
     //Add new data
     //Todo : alarm 추가
-    func addBasicContents(name: String, seat: String?, date: NSDate, genre: String, theater: Theater, actor: String?, alarmLabel: String?) -> Int{
+    func addBasicContents(name: String, seat: String?, date: NSDate, genre: String, theater: Theater?, actor: String?, alarmLabel: String?) -> Int{
         let newTicket = Ticket()
         
         newTicket.name = name

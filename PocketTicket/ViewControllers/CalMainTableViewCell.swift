@@ -16,16 +16,16 @@ class CalMainTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellView.layer.borderWidth = 1
-        cellView.layer.borderColor = UIColor.black.cgColor
+        //Set layrer border color 
+        self.cellView.layer.borderWidth = 1
+        self.cellView.layer.borderColor = UIColor.black.cgColor
         
-        dateLabel.textColor = UIColor(red:0.57, green:0.58, blue:0.61, alpha:1.00)
+        self.dateLabel.textColor = UIColor(red:0.57, green:0.58, blue:0.61, alpha:1.00)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

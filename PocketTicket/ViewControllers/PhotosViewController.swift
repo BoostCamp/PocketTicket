@@ -12,13 +12,14 @@ import Photos
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
+    //MARK: - Properties
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     @IBOutlet weak var addPhotos: UIBarButtonItem!
-    
     @IBOutlet weak var deleteButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    //Data singleton
     let dataInstance = DataController.sharedInstance()
 
     var showTicket : Ticket? = nil
@@ -39,38 +40,34 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView()
     
     
+    //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //table view에서 navibar 만큼 내려가는 간격 없애기
-        automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = false
         
         //create Directory
-        createDirectory()
+        self.createDirectory()
         
         //get photo array
-        loadPhotoList()
+        self.loadPhotoList()
         
-        //show cancel button
-        pickerController.showsCancelButton = true
-        
-        
+        //Picker controller - show cancel button
+        self.pickerController.showsCancelButton = true
         
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if totalPhotoNum == 0{
             self.title = "Photos"
-            deleteButton.isEnabled = false
-            shareButton.isEnabled = false
+            self.deleteButton.isEnabled = false
+            self.shareButton.isEnabled = false
         }
+        
         self.tabBarController?.tabBar.isHidden = true
-        
- 
- 
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,7 +77,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             
         }
         else if self.firstShow == true{
-            connectDKImagePicker(addPhotos)
+            self.connectDKImagePicker(addPhotos)
         }
         self.firstShow = false
     }
